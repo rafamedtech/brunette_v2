@@ -18,7 +18,7 @@ onMounted(() => {
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <CategoryCard :category="(category as Category)" />
+        <CategoryCard :category="(category as Category)" title-size="large" />
       </template>
 
       <template #content>

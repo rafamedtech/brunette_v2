@@ -20,7 +20,7 @@ const { title, description, cover } = defineProps<{
     >
       <h1
         class="card-title text-primary text-3xl w-fit"
-        :class="{ 'p-2 rounded-lg bg-accent/20 dark:bg-primary/10 shadow-sm': cover }"
+        :class="{ 'px-2 rounded-lg bg-accent/20 dark:bg-primary/10 shadow-sm': cover }"
       >
         {{ title }}
       </h1>
