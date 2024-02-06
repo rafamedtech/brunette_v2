@@ -8,7 +8,7 @@ defineProps<Props>();
 
 <template>
   <section class="min-h-screen w-full">
-    <section class="lg:pt-8">
+    <section class="lg:pt-8 pt-4">
       <slot name="heading"></slot>
     </section>
 
@@ -16,7 +16,7 @@ defineProps<Props>();
       <Icon name="icon-park-outline:loading-four" size="48" class="animate-spin" />
     </div>
 
-    <section class="pb-24" v-else>
+    <section class="pb-24 pt-4" v-else>
       <slot name="content"></slot>
     </section>
   </section>

@@ -6,13 +6,13 @@ const { section } = defineProps<{
 
 <template>
   <div
-    class="relative section-banner rounded-lg shadow-pinterest dark:section-banner-dark flex h-32 w-full flex-col justify-center py-2 lg:h-40 lg:rounded-xl lg:shadow-xl"
+    class="relative section-banner rounded-xl shadow-pinterest dark:section-banner-dark flex h-32 w-full flex-col justify-center py-2 lg:h-40 lg:shadow-xl"
   >
     <img
       v-if="section.cover"
       :src="section.cover"
       alt=""
-      class="absolute inset-0 h-full w-full rounded-lg object-cover brightness-50"
+      class="absolute inset-0 h-full w-full rounded-xl object-cover brightness-50"
     />
 
     <h2

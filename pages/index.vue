@@ -15,7 +15,7 @@ onMounted(() => {
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <AppHeading title="Información del restaurant" class="title-heading" />
+        <AppHeading title="Información del restaurant" />
       </template>
 
       <template #content>

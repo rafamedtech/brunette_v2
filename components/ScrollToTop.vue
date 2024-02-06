@@ -3,7 +3,7 @@ const store = useMainStore();
 const { showScrollToTop } = storeToRefs(store);
 
 const handleScroll = () => {
-  showScrollToTop.value = window.scrollY > 150;
+  showScrollToTop.value = window.scrollY > 200;
 };
 const scrollToTop = () => {
   window.scrollTo({

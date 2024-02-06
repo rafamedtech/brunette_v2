@@ -12,7 +12,7 @@ const { name, cover, slug } = toRefs(category);
 <template>
   <NuxtLink
     :to="`/menu/${slug}`"
-    class="w-full focus:ring-4 focus:scale-105 transition-all hover:scale-105 focus:ring-green-500 focus:rounded-xl"
+    class="w-full focus:ring-4 focus:scale-95 transition-all hover:scale-105 focus:ring-green-500 focus:rounded-xl"
   >
     <UCard
       :ui="{

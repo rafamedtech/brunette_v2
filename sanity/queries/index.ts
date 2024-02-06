@@ -50,6 +50,7 @@ export const allEvents = groq`
 }`;
 export const allQuestions = groq`
 *[_type == 'question']{
+  _id,
   text,
   rating
 }`;
