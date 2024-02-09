@@ -23,7 +23,7 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
       @input="$emit('update:modelValue', handleInputChange($event))"
       :type="type"
       :required="isrequired"
-      size="md"
+      size="lg"
       color="gray"
       :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />

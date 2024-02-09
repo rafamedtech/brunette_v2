@@ -14,7 +14,7 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
       v-bind="$attrs"
       @input="$emit('update:modelValue', handleInputChange($event))"
       :options="items"
-      size="md"
+      size="lg"
       color="gray"
       :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />
