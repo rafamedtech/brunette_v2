@@ -20,7 +20,12 @@ onMounted(() => {
 
       <template #content>
         <section class="grid md:pt-4 md:grid-cols-2 gap-6 md:gap-8 md:px-2">
-          <CategoryCard v-for="category in categories" :key="category.id" :category="category" />
+          <CategoryCard
+            v-for="category in categories"
+            :key="category.id"
+            :category="category"
+            link
+          />
         </section>
       </template>
     </MainSection>

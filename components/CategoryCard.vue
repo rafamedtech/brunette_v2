@@ -2,9 +2,10 @@
 interface Props {
   category: Category;
   titleSize?: string;
+  link?: boolean;
 }
 
-const { category, titleSize } = defineProps<Props>();
+const { category, titleSize, link } = defineProps<Props>();
 
 const { name, cover, slug } = toRefs(category);
 </script>
@@ -12,7 +13,8 @@ const { name, cover, slug } = toRefs(category);
 <template>
   <NuxtLink
     :to="`/menu/${slug}`"
-    class="w-full focus:ring-4 focus:scale-95 transition-all hover:scale-105 focus:ring-green-500 focus:rounded-xl"
+    class="w-full focus:ring-4 focus:scale-95 transition-all hover:scale-95 focus:ring-green-500 focus:rounded-xl"
+    :class="{ 'pointer-events-none': !link }"
   >
     <UCard
       :ui="{
@@ -23,7 +25,7 @@ const { name, cover, slug } = toRefs(category);
     >
       <img
         :src="cover"
-        class="min-w-full w-full object-cover h-36 lg:h-52 rounded-xl brightness-75 dark:brightness-50"
+        class="min-w-full w-full object-cover h-36 md:h-52 rounded-xl brightness-75 dark:brightness-50"
         alt=""
       />
       <section

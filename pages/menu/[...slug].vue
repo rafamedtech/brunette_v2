@@ -31,7 +31,7 @@ onMounted(() => {
             <p class="text-lg">No hay nada aquí aún.</p>
           </section>
 
-          <section v-else class="my-4 pb-16 lg:grid lg:grid-cols-2 lg:gap-8 content">
+          <section v-else class="my-4 pb-16 md:grid md:grid-cols-2 md:gap-8">
             <div v-for="section in category?.sections" :key="section._id">
               <SectionBanner :section="section" />
               <SectionItems

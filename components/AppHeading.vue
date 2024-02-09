@@ -15,11 +15,11 @@ const { title, description, cover } = defineProps<{
       class="absolute h-full w-full object-cover z-10 inset-0 brightness-50 rounded-lg"
     />
     <section
-      class="z-50 relative h-full"
+      class="z-50 relative h-full md:p-2"
       :class="{ 'min-h-[10rem] grid place-content-center': cover }"
     >
       <h1
-        class="card-title text-primary text-3xl w-fit"
+        class="card-title text-primary text-3xl w-fit md:text-4xl"
         :class="{ 'px-2 rounded-lg bg-accent/20 dark:bg-primary/10 shadow-sm': cover }"
       >
         {{ title }}
