@@ -9,12 +9,14 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
 
 <template>
   <div class="flex flex-col gap-2">
-    <label for="" class="dark:text-base-100">{{ label }}</label>
+    <label for="" class="dark:text-gray-100">{{ label }}</label>
     <USelect
       v-bind="$attrs"
       @input="$emit('update:modelValue', handleInputChange($event))"
       :options="items"
       size="md"
+      color="gray"
+      :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />
   </div>
 </template>

@@ -43,12 +43,14 @@ async function formSubmit() {
     </article>
 
     <section class="my-8 flex flex-col gap-4">
-      <article v-for="question in questions" class="flex flex-col border-b pb-6">
+      <article
+        v-for="question in questions"
+        class="flex flex-col border-b border-gray-300 dark:border-gray-600 pb-6"
+      >
         <h3 class="flex-1">{{ question.text }}</h3>
         <div class="flex items-center gap-2 justify-center">
           <BaseSelect :items="ratings" v-model="question.rating" />
           <Icon name="i-heroicons-star" size="32" class="text-primary" />
-          <!-- <Icon name="i-heroicons-arrow-small-down" /> -->
         </div>
       </article>
     </section>

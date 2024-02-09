@@ -9,6 +9,8 @@ const darkModeIcon = computed(() =>
   isDark.value ? 'i-heroicons-sun-solid' : 'i-heroicons-moon-solid'
 );
 
+const darkModeText = computed(() => (isDark.value ? 'Light' : 'Dark'));
+
 function changeLanguage() {}
 </script>
 
@@ -20,23 +22,24 @@ function changeLanguage() {}
     <Logo />
 
     <section class="flex items-center gap-2">
-      <!-- <DarkLightBtn mobile /> -->
-      <UButton
-        :label="isDark ? 'Claro' : 'Oscuro'"
-        :icon="darkModeIcon"
-        variant="solid"
-        color="gray"
-        :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
-        class="flex-1"
-        @click="toggleDark()"
-      />
-      <UButton
-        :label="language === 'es' ? 'English' : 'Español'"
-        icon="i-heroicons-arrows-up-down-16-solid"
-        variant="solid"
-        :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
-        @click="changeLanguage"
-      />
+      <ClientOnly>
+        <UButton
+          :label="darkModeText"
+          :icon="darkModeIcon"
+          variant="solid"
+          color="gray"
+          :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
+          class="flex-1"
+          @click="toggleDark()"
+        />
+        <UButton
+          :label="language === 'es' ? 'English' : 'Español'"
+          icon="i-heroicons-arrows-up-down-16-solid"
+          variant="solid"
+          :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
+          @click="changeLanguage"
+        />
+      </ClientOnly>
     </section>
   </div>
 </template>

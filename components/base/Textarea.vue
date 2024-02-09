@@ -19,6 +19,8 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
       :value="modelValue"
       :placeholder="placeholder"
       @input="$emit('update:modelValue', handleInputChange($event))"
+      color="gray"
+      :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />
   </div>
 </template>

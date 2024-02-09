@@ -24,6 +24,8 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
       :type="type"
       :required="isrequired"
       size="md"
+      color="gray"
+      :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />
   </div>
 </template>
