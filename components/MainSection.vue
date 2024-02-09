@@ -7,7 +7,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <section class="min-h-screen w-full">
+  <section class="min-h-dvh w-full">
     <section class="lg:pt-8 pt-8">
       <slot name="heading"></slot>
     </section>
