@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import { allEvents } from '@/sanity/queries';
 const store = useStore();
-const { eventModal } = storeToRefs(store);
+const { fullscreenEvents } = storeToRefs(store);
+// const fullscreenEvents = ref(true);
 
-const image =
-  'https://res.cloudinary.com/rafamed-dev/image/upload/v1706125314/events/superbowl_vbcqdu.jpg';
+const { data: events } = await useSanityQuery<Evento[]>(allEvents);
 </script>
 
 <template>
   <UModal
-    v-model="eventModal"
+    v-model="fullscreenEvents"
     prevent-close
     :ui="{
       wrapper: 'z-[999999]',
       overlay: { background: 'bg-dark-medium/75 dark:bg-dark-medium/75' },
+      container: 'items-center max-w-sm mx-auto',
       rounded: 'rounded-xl',
     }"
   >
@@ -26,19 +28,19 @@ const image =
     >
       <template #header>
         <div class="flex items-center justify-between gap-2">
-          <h2 class="text-lg">Evento destacado</h2>
+          <h2 class="text-lg">Eventos</h2>
           <UButton
-            label="Ir al menú"
+            label="Regresar"
             color="primary"
-            icon="i-heroicons-arrow-left-on-rectangle-solid"
+            icon="i-heroicons-arrows-pointing-in"
             size="md"
             class="-my-1"
-            @click="eventModal = false"
+            @click="fullscreenEvents = false"
           />
         </div>
       </template>
 
-      <img :src="image" alt="" class="rounded-xl" />
+      <EventCarousel :events="events" />
     </UCard>
   </UModal>
 </template>

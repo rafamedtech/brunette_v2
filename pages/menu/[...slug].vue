@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import noItems from '@/assets/img/no-items.svg';
 
-const store = useMainStore();
+const store = useStore();
 const { isLoading } = storeToRefs(store);
 
 const { params } = useRoute();

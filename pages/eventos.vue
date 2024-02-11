@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { allEvents } from '@/sanity/queries';
 
-const store = useMainStore();
-const { isLoading } = storeToRefs(store);
+const store = useStore();
+const { isLoading, fullscreenEvents } = storeToRefs(store);
 
 const { data: events } = useSanityQuery<Evento[]>(allEvents);
 
@@ -20,7 +20,13 @@ onMounted(() => {
 
       <template #content>
         <!-- Events on mobile -->
-        <section class="md:hidden">
+        <section class="md:hidden flex flex-col gap-8 px-4">
+          <UButton
+            label="Pantalla completa"
+            icon="i-heroicons-arrows-pointing-out"
+            class="mx-auto"
+            @click="fullscreenEvents = true"
+          />
           <EventCarousel :events="events" />
         </section>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const store = useMainStore();
+const store = useStore();
 const { isLoading } = storeToRefs(store);
 
 const { categories, getMenu } = useMenu();

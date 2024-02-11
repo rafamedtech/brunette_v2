@@ -8,7 +8,7 @@ const { name, description, cover } = event;
 <template>
   <UCard
     :ui="{
-      base: 'container items-center group min-w-0 relative h-[40rem]',
+      base: 'container items-center  group min-w-0 relative h-[40rem]',
       body: { padding: 'px-0 py-0 sm:p-0 h-full' },
       rounded: 'rounded-xl',
     }"

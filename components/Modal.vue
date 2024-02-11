@@ -1,14 +1,16 @@
 <script setup lang="ts">
 const store = useStore();
-const { eventModal } = storeToRefs(store);
+const { openModal } = storeToRefs(store);
 
-const image =
-  'https://res.cloudinary.com/rafamed-dev/image/upload/v1706125314/events/superbowl_vbcqdu.jpg';
+function closeModal() {
+  openModal.value = false;
+  return navigateTo('/menu');
+}
 </script>
 
 <template>
   <UModal
-    v-model="eventModal"
+    v-model="openModal"
     prevent-close
     :ui="{
       wrapper: 'z-[999999]',
@@ -26,19 +28,20 @@ const image =
     >
       <template #header>
         <div class="flex items-center justify-between gap-2">
-          <h2 class="text-lg">Evento destacado</h2>
+          <h2 class="text-lg">Encuesta enviada!</h2>
           <UButton
             label="Ir al menú"
             color="primary"
             icon="i-heroicons-arrow-left-on-rectangle-solid"
             size="md"
             class="-my-1"
-            @click="eventModal = false"
+            @click="closeModal"
           />
         </div>
       </template>
 
-      <img :src="image" alt="" class="rounded-xl" />
+      <h3 class="text-xl text-primary mb-2">Gracias por tus comentarios</h3>
+      <p>Con tus comentarios podemos mejorar nuestros productos y servicios</p>
     </UCard>
   </UModal>
 </template>

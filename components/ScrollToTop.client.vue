@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const store = useMainStore();
+const store = useStore();
 const { showScrollToTop } = storeToRefs(store);
 
 const handleScroll = () => {
