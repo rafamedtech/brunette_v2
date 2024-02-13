@@ -20,7 +20,7 @@ onMounted(() => {
 
       <template #content>
         <section
-          class="text-dark-strong dark:text-base-100 md:mt-20 lg:mt-4"
+          class="text-dark-strong dark:text-base-100 lg:mt-4"
           :class="{ content: isLoading }"
         >
           <section class="md:w-1/2 md:mx-auto">

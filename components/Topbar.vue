@@ -26,16 +26,21 @@ function changeLanguage() {}
         <UButton
           :label="darkModeText"
           :icon="darkModeIcon"
-          variant="solid"
+          variant="ghost"
           color="gray"
-          :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
+          :ui="{
+            inline: 'flex-col',
+            rounded: 'rounded-xl',
+            color: { gray: { ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800' } },
+          }"
           class="flex-1"
           @click="toggleDark()"
         />
         <UButton
-          :label="language === 'es' ? 'English' : 'Español'"
+          :label="language === 'es' ? 'EN' : 'ES'"
           icon="i-heroicons-arrows-up-down-16-solid"
-          variant="solid"
+          variant="ghost"
+          color="primary"
           :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
           @click="changeLanguage"
         />
