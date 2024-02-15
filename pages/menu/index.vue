@@ -4,6 +4,8 @@ const { isLoading } = storeToRefs(store);
 
 const { categories, getMenu } = useMenu();
 
+const { menuPageLabels } = useI18n();
+
 await getMenu();
 
 onMounted(() => {
@@ -15,7 +17,7 @@ onMounted(() => {
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <AppHeading title="Menú" />
+        <AppHeading :title="menuPageLabels.title" />
       </template>
 
       <template #content>

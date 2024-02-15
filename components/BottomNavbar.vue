@@ -1,5 +1,5 @@
 <script setup>
-import { sidebarLinks } from '@/utils/sidebarLinks';
+const { navLinksLabels } = useI18n();
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import { sidebarLinks } from '@/utils/sidebarLinks';
       inactive: 'hover:text-white text-gray-400 hover:before:bg-gray-800/50',
       icon: { active: 'text-gray-200', inactive: 'text-gray-500' },
     }"
-    :links="sidebarLinks"
+    :links="navLinksLabels"
     class="fixed z-[999] bottom-0 bg-dark-strong"
   />
 </template>

@@ -12,6 +12,8 @@ const validate = (state: any): FormError[] => {
 const store = useStore();
 const { openModal } = storeToRefs(store);
 
+const { surveyPageLabels } = useI18n();
+
 const { surveyData, getQuestions, questions } = useSurvey();
 await getQuestions();
 
@@ -22,7 +24,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
   loadingBtn.value = true;
 
   setTimeout(() => {
-    console.log({ ...event.data, questions: questions.value });
+    // console.log({ ...event.data, questions: questions.value });
     openModal.value = true;
     loadingBtn.value = false;
   }, 1000);
@@ -58,9 +60,13 @@ async function formSubmit() {
 <template>
   <UForm :state="surveyData" class="max-w-md mx-auto" @submit="onSubmit">
     <article class="flex flex-col gap-4">
-      <BaseInput label="Tu nombre (opcional)" v-model="surveyData.name" />
-      <BaseInput label="Correo electrónico" v-model="surveyData.email" isrequired />
-      <BaseSelect label="Mesero que le atendió" :items="waitersList" v-model="surveyData.waiter" />
+      <BaseInput :label="surveyPageLabels.form.name" v-model="surveyData.name" />
+      <BaseInput :label="surveyPageLabels.form.email" v-model="surveyData.email" />
+      <BaseSelect
+        :label="surveyPageLabels.form.waiter"
+        :items="waitersList"
+        v-model="surveyData.waiter"
+      />
     </article>
 
     <section class="my-12 flex flex-col gap-4">
@@ -76,13 +82,13 @@ async function formSubmit() {
       </article>
     </section>
 
-    <BaseTextarea label="Comentarios" v-model="surveyData.comments" />
+    <BaseTextarea :label="surveyPageLabels.form.comments" v-model="surveyData.comments" />
 
     <UButton
       :loading="loadingBtn"
       class="mx-auto mt-8"
       size="lg"
-      :label="loadingBtn ? 'Enviando' : 'Enviar'"
+      :label="loadingBtn ? surveyPageLabels.form.loading : surveyPageLabels.form.button"
       type="submit"
     />
   </UForm>

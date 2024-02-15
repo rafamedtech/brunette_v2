@@ -12,6 +12,8 @@ const scrollToTop = () => {
   });
 };
 
+const { scrollToTopLabels } = useI18n();
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
@@ -27,14 +29,14 @@ onBeforeUnmount(() => {
   >
     <UButton
       v-if="showScrollToTop"
-      label="Arriba"
+      :label="scrollToTopLabels.scrollToTop"
       icon="i-heroicons-arrow-small-up"
       class="text-white"
       :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
       @click="scrollToTop"
     />
     <UButton
-      label="Menu"
+      :label="scrollToTopLabels.back"
       icon="i-heroicons-arrow-small-left"
       class="text-white"
       @click="navigateTo('/menu')"

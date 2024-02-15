@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { sidebarLinks } from '@/utils/sidebarLinks';
+const { changeLanguage, navLinksLabels } = useI18n();
+const store = useStore();
+const { language } = storeToRefs(store);
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
-
 const darkModeLabel = computed(() => {
   return isDark.value ? 'Light mode' : 'Dark mode';
 });
@@ -11,18 +12,31 @@ const darkModeIcon = computed(() =>
   isDark.value ? 'i-heroicons-sun-solid' : 'i-heroicons-moon-solid'
 );
 
-const links = ref([
-  [...sidebarLinks],
-  [
-    {
-      label: darkModeLabel,
-      icon: darkModeIcon,
-      click: () => {
-        toggleDark();
+const changeLanguageBtn = computed(() => {
+  return language.value === 'es' ? 'English' : 'Español';
+});
+
+const links = computed<any>(() => {
+  return [
+    navLinksLabels.value,
+    [
+      {
+        label: darkModeLabel.value,
+        icon: darkModeIcon.value,
+        click: () => {
+          toggleDark();
+        },
       },
-    },
-  ],
-]);
+      {
+        label: changeLanguageBtn.value,
+        icon: 'i-heroicons-arrows-up-down-solid',
+        click: () => {
+          changeLanguage();
+        },
+      },
+    ],
+  ];
+});
 </script>
 
 <template>

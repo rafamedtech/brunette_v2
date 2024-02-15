@@ -2,6 +2,8 @@
 const store = useStore();
 const { isLoading } = storeToRefs(store);
 
+const { surveyPageLabels } = useI18n();
+
 onMounted(() => {
   isLoading.value = false;
 });
@@ -14,7 +16,7 @@ await getQuestions();
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <AppHeading title="Encuesta de satisfacción" description="Agradecemos su opinión" />
+        <AppHeading :title="surveyPageLabels.title" :description="surveyPageLabels.description" />
       </template>
 
       <template #content>

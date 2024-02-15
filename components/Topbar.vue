@@ -11,7 +11,7 @@ const darkModeIcon = computed(() =>
 
 const darkModeText = computed(() => (isDark.value ? 'Light' : 'Dark'));
 
-function changeLanguage() {}
+const { changeLanguage } = useI18n();
 </script>
 
 <template>
@@ -38,10 +38,14 @@ function changeLanguage() {}
         />
         <UButton
           :label="language === 'es' ? 'EN' : 'ES'"
-          icon="i-heroicons-arrows-up-down-16-solid"
+          icon="i-heroicons-arrows-up-down-solid"
           variant="ghost"
           color="primary"
-          :ui="{ inline: 'flex-col', rounded: 'rounded-xl' }"
+          :ui="{
+            inline: 'flex-col',
+            rounded: 'rounded-xl',
+            color: { primary: { ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800' } },
+          }"
           @click="changeLanguage"
         />
       </ClientOnly>

@@ -1,4 +1,4 @@
-export const sidebarLinks = [
+export const navLinks = [
   {
     label: 'Menú',
     icon: 'i-heroicons-clipboard-document-list-solid',

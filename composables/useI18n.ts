@@ -1,0 +1,131 @@
+import { navLinks } from '@/utils/navLinks';
+
+export function useI18n() {
+  const store = useStore();
+  const { language } = storeToRefs(store);
+
+  const aboutPageLabels = computed(() => {
+    return language.value === 'es'
+      ? {
+          title: 'Acerca del restaurant',
+          address: 'Dirección:',
+          phone: 'Teléfono:',
+          schedule: 'Horario:',
+        }
+      : {
+          title: 'About the restaurant',
+          address: 'Address:',
+          phone: 'Phone:',
+          schedule: 'Schedule:',
+        };
+  });
+
+  const surveyPageLabels = computed(() => {
+    return language.value === 'es'
+      ? {
+          title: 'Encuesta de satisfacción',
+          description: 'Agradecemos su opinión respondiendo unas preguntas',
+          form: {
+            name: 'Nombre',
+            email: 'Correo electrónico',
+            waiter: 'Mesero que le atendió',
+            comments: 'Comentarios',
+            button: 'Enviar',
+            loading: 'Enviando',
+          },
+        }
+      : {
+          title: 'Satisfaction survey',
+          description: 'We appreciate your opinion by answering a few questions',
+          form: {
+            name: 'Name',
+            email: 'Email',
+            waiter: 'Waiter who attended you',
+            comments: 'Comments',
+            button: 'Send',
+            loading: 'Sending',
+          },
+        };
+  });
+
+  const eventsPageLabels = computed(() => {
+    return language.value === 'es'
+      ? {
+          title: 'Eventos',
+          description: 'Encuentra nuestros eventos y promociones',
+          fullscreenButton: 'Pantalla completa',
+        }
+      : {
+          title: 'Events',
+          description: 'Find our events and promotions',
+          fullscreenButton: 'Full screen',
+        };
+  });
+
+  const menuPageLabels = computed(() => {
+    return language.value === 'es'
+      ? {
+          title: 'Menú',
+          description: 'Descubre nuestros platillos y bebidas',
+        }
+      : {
+          title: 'Menu',
+          description: 'Discover our dishes and drinks',
+        };
+  });
+
+  const scrollToTopLabels = computed(() => {
+    return language.value === 'es'
+      ? {
+          scrollToTop: 'Arriba',
+          back: 'Atrás',
+        }
+      : {
+          scrollToTop: 'Top',
+          back: 'Back',
+        };
+  });
+
+  const navLinksLabels = computed(() => {
+    return [
+      {
+        label: language.value === 'es' ? 'Menú' : 'Menu',
+        icon: 'i-heroicons-clipboard-document-list-solid',
+        to: '/menu',
+      },
+      {
+        label: language.value === 'es' ? 'Eventos' : 'Events',
+        icon: 'i-heroicons-calendar-days-solid',
+        to: '/eventos',
+      },
+      {
+        label: language.value === 'es' ? 'Encuesta' : 'Survey',
+        icon: 'i-heroicons-clipboard-document-check-16-solid',
+        to: '/encuesta',
+      },
+      {
+        label: language.value === 'es' ? 'Acerca de' : 'About',
+        icon: 'i-heroicons-building-storefront-solid',
+        to: '/',
+      },
+    ];
+  });
+
+  function changeLanguage() {
+    if (language.value === 'es') {
+      language.value = 'en';
+    } else {
+      language.value = 'es';
+    }
+  }
+
+  return {
+    changeLanguage,
+    menuPageLabels,
+    aboutPageLabels,
+    surveyPageLabels,
+    eventsPageLabels,
+    scrollToTopLabels,
+    navLinksLabels,
+  };
+}

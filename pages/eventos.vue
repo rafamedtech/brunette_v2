@@ -6,6 +6,8 @@ const { isLoading, fullscreenEvents } = storeToRefs(store);
 
 const { data: events } = useSanityQuery<Evento[]>(allEvents);
 
+const { eventsPageLabels } = useI18n();
+
 onMounted(() => {
   isLoading.value = false;
 });
@@ -15,14 +17,14 @@ onMounted(() => {
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <AppHeading title="Eventos" description="Esta es la descripción de los eventos" />
+        <AppHeading :title="eventsPageLabels.title" :description="eventsPageLabels.description" />
       </template>
 
       <template #content>
         <!-- Events on mobile -->
         <section class="md:hidden flex flex-col gap-8 px-4">
           <UButton
-            label="Pantalla completa"
+            :label="eventsPageLabels.fullscreenButton"
             icon="i-heroicons-arrows-pointing-out"
             class="mx-auto"
             @click="fullscreenEvents = true"
