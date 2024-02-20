@@ -1,6 +1,6 @@
 export function useI18n() {
   const store = useStore();
-  const { language } = storeToRefs(store);
+  const { language, loadingScreen } = storeToRefs(store);
 
   const aboutPageLabels = computed(() => {
     return language.value === 'es'
@@ -31,6 +31,10 @@ export function useI18n() {
             button: 'Enviar',
             loading: 'Enviando',
           },
+          done: '¡Enviada!',
+          modalTitle: '¡Gracias por tu opinión!',
+          modalDescription: 'Con tus comentarios podemos mejorar nuestros productos y servicios',
+          exit: 'Salir',
         }
       : {
           title: 'Satisfaction survey',
@@ -43,6 +47,10 @@ export function useI18n() {
             button: 'Send',
             loading: 'Sending',
           },
+          done: 'Completed!',
+          modalTitle: 'Thanks for your opinion!',
+          modalDescription: 'With your comments we can improve our products and services',
+          exit: 'Exit',
         };
   });
 
@@ -51,7 +59,7 @@ export function useI18n() {
       ? {
           title: 'Eventos',
           description: 'Encuentra nuestros eventos y promociones',
-          fullscreenButton: 'Pantalla completa',
+          fullscreenButton: 'Ampliar',
         }
       : {
           title: 'Events',
@@ -109,13 +117,19 @@ export function useI18n() {
     ];
   });
 
-  function changeLanguage() {
-    if (language.value === 'es') {
-      language.value = 'en';
-    } else {
-      language.value = 'es';
-    }
-  }
+  const changeLanguage = () => {
+    loadingScreen.value = true;
+
+    setTimeout(() => {
+      if (language.value === 'es') {
+        language.value = 'en';
+      } else {
+        language.value = 'es';
+      }
+
+      loadingScreen.value = false;
+    }, 1000);
+  };
 
   return {
     changeLanguage,

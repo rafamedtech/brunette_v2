@@ -2,9 +2,11 @@
 const store = useStore();
 const { openModal } = storeToRefs(store);
 
+const { surveyPageLabels } = useI18n();
+
 function closeModal() {
   openModal.value = false;
-  return navigateTo('/menu');
+  return navigateTo('/');
 }
 </script>
 
@@ -28,9 +30,9 @@ function closeModal() {
     >
       <template #header>
         <div class="flex items-center justify-between gap-2">
-          <h2 class="text-lg">Encuesta enviada!</h2>
+          <h2 class="text-lg">{{ surveyPageLabels.done }}</h2>
           <UButton
-            label="Ir al menú"
+            :label="surveyPageLabels.exit"
             color="primary"
             icon="i-heroicons-arrow-left-on-rectangle-solid"
             size="md"
@@ -40,8 +42,8 @@ function closeModal() {
         </div>
       </template>
 
-      <h3 class="text-xl text-primary mb-2">Gracias por tus comentarios</h3>
-      <p>Con tus comentarios podemos mejorar nuestros productos y servicios</p>
+      <h3 class="text-xl text-primary mb-2">{{ surveyPageLabels.modalTitle }}</h3>
+      <p>{{ surveyPageLabels.modalDescription }}</p>
     </UCard>
   </UModal>
 </template>

@@ -50,7 +50,10 @@ const links = computed<any>(() => {
         :ui="{
           active: 'before:bg-gray-800 text-white',
           inactive: 'hover:text-white text-gray-400 hover:before:bg-gray-800/50',
-          icon: { active: 'text-gray-200', inactive: 'text-gray-500' },
+          icon: {
+            active: 'text-gray-200',
+            inactive: '',
+          },
         }"
       />
     </ClientOnly>
