@@ -84,12 +84,14 @@ async function formSubmit() {
 
     <BaseTextarea :label="surveyPageLabels.form.comments" v-model="surveyData.comments" />
 
-    <UButton
-      :loading="loadingBtn"
-      class="mx-auto mt-8"
-      size="lg"
-      :label="loadingBtn ? surveyPageLabels.form.loading : surveyPageLabels.form.button"
-      type="submit"
-    />
+    <section class="flex justify-end mt-8">
+      <UButton
+        :loading="loadingBtn"
+        size="lg"
+        :label="loadingBtn ? surveyPageLabels.form.loading : surveyPageLabels.form.button"
+        icon="i-heroicons-paper-airplane"
+        type="submit"
+      />
+    </section>
   </UForm>
 </template>

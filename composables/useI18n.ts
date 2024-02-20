@@ -1,5 +1,3 @@
-import { navLinks } from '@/utils/navLinks';
-
 export function useI18n() {
   const store = useStore();
   const { language } = storeToRefs(store);
@@ -100,7 +98,7 @@ export function useI18n() {
       },
       {
         label: language.value === 'es' ? 'Encuesta' : 'Survey',
-        icon: 'i-heroicons-clipboard-document-check-16-solid',
+        icon: 'i-heroicons-clipboard-document-check-solid',
         to: '/encuesta',
       },
       {
