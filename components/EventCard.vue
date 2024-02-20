@@ -8,20 +8,20 @@ const { name, description, cover } = event;
 <template>
   <UCard
     :ui="{
-      base: 'container items-center  group min-w-0 relative h-[40rem]',
+      base: 'container items-center group min-w-full w-full border border-transparent hover:border-primary max-w-xs xl:h-[36rem] md:h-[30rem] lg:h-[28rem] h-full relative overflow-hidden bg-dark-strong shadow-lg transition-all',
       body: { padding: 'px-0 py-0 sm:p-0 h-full' },
       rounded: 'rounded-xl',
     }"
   >
     <img
-      class="rounded-2xl h-full w-full absolute md:mx-auto object-cover z-10 dark:brightness-75 group-hover:brightness-[.25] transition-all"
+      class="absolute z-10 h-full w-full rounded-xl object-cover transition-all group-hover:brightness-[.25] dark:brightness-75 md:mx-auto"
       :src="cover"
       alt="Event cover"
     />
     <section
-      class="invisible group-hover:visible scale-95 max-w-full group-hover:scale-100 transition-all z-[999] relative p-8 flex flex-col justify-center h-full"
+      class="invisible relative z-[999] flex h-full max-w-full scale-95 flex-col justify-center p-8 transition-all group-hover:visible group-hover:scale-100"
     >
-      <h2 class="text-center text-2xl font-bold uppercase text-primary">
+      <h2 class="text-primary text-center text-2xl font-bold uppercase">
         {{ name }}
       </h2>
       <p class="text-gray-100">{{ description }}</p>

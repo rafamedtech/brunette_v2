@@ -6,14 +6,14 @@ const { language } = storeToRefs(store);
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 const darkModeLabel = computed(() => {
-  return isDark.value ? 'Light mode' : 'Dark mode';
+  return isDark.value ? "Light mode" : "Dark mode";
 });
 const darkModeIcon = computed(() =>
-  isDark.value ? 'i-heroicons-sun-solid' : 'i-heroicons-moon-solid'
+  isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
 );
 
 const changeLanguageBtn = computed(() => {
-  return language.value === 'es' ? 'English' : 'Español';
+  return language.value === "es" ? "English" : "Español";
 });
 
 const links = computed<any>(() => {
@@ -29,7 +29,7 @@ const links = computed<any>(() => {
       },
       {
         label: changeLanguageBtn.value,
-        icon: 'i-heroicons-arrows-up-down-solid',
+        icon: "i-heroicons-arrows-up-down-solid",
         click: () => {
           changeLanguage();
         },
@@ -40,18 +40,20 @@ const links = computed<any>(() => {
 </script>
 
 <template>
-  <section class="bg-dark-strong px-4 w-1/6 fixed min-h-screen">
-    <article class="flex justify-center py-4 min-w-0">
+  <section class="fixed min-h-screen w-1/6 bg-dark-strong px-4">
+    <article class="flex min-w-0 justify-center py-4">
       <Logo />
     </article>
     <ClientOnly>
       <UVerticalNavigation
         :links="links"
         :ui="{
-          active: 'before:bg-gray-800 text-white',
-          inactive: 'hover:text-white text-gray-400 hover:before:bg-gray-800/50',
+          active:
+            'before:bg-gray-800 text-primary dark:text-primary border border-primary',
+          inactive:
+            'hover:text-white text-gray-400 hover:before:bg-gray-800/50 border border-transparent',
           icon: {
-            active: 'text-gray-200',
+            active: 'text-primary dark:text-primary',
             inactive: '',
           },
         }"

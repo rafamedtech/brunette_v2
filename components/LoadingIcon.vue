@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex flex-col items-center gap-4">
-      <Icon name="svg-spinners:tadpole" size="52" class="text-primary" />
+      <Icon name="icon-park-outline:loading-four" size="52" class="text-primary animate-spin" />
     </div>
   </div>
 </template>

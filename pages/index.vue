@@ -40,6 +40,7 @@ onMounted(() => {
                 class="min-w-full w-full object-cover h-36 lg:h-52 rounded-xl brightness-50"
                 alt=""
               />
+
               <section
                 class="rounded-b-xl flex-col absolute bottom-0 z-10 flex h-1/3 w-full justify-center bg-gradient-to-t from-black to-transparent pl-4"
               >
@@ -49,22 +50,36 @@ onMounted(() => {
                 <p class="text-gray-100 pb-8">{{ aboutInfo.description }}</p>
               </section>
             </UCard>
+            <section class="flex justify-center gap-4 mt-8 text-primary">
+              <NuxtLink
+                v-for="{ id, name, icon, url } in aboutInfo.socials"
+                :key="id"
+                :to="url"
+                target="_blank"
+                class="flex flex-col items-center"
+              >
+                <Icon :name="icon" size="32" />
+                <span class="text-dark-strong dark:text-gray-100">{{ name }}</span>
+              </NuxtLink>
+            </section>
             <section class="py-8 text-primary">
-              <h3>
+              <h3 class="font-bold">
                 {{ aboutPageLabels.address }}
-                <span class="block text-dark-strong dark:text-gray-100">{{
+                <span class="block text-dark-strong font-normal dark:text-gray-100">{{
                   aboutInfo.address
                 }}</span>
               </h3>
-              <h4>
+              <h4 class="font-bold">
                 {{ aboutPageLabels.phone }}
-                <span class="block text-dark-strong dark:text-gray-100">{{ aboutInfo.phone }}</span>
+                <span class="block text-dark-strong font-normal dark:text-gray-100">{{
+                  aboutInfo.phone
+                }}</span>
               </h4>
             </section>
           </section>
 
           <section class="my-4 md:w-1/2 md:mx-auto dark:text-gray-100">
-            <h3 class="text-primary text-xl">{{ aboutPageLabels.schedule }}</h3>
+            <h3 class="text-primary text-xl font-bold">{{ aboutPageLabels.schedule }}</h3>
             <section
               v-for="{ id, name, time } in aboutInfo.schedule"
               :key="id"
@@ -73,19 +88,6 @@ onMounted(() => {
               <h4>{{ name }}</h4>
               <span>{{ time }}</span>
             </section>
-          </section>
-
-          <section class="flex justify-center gap-4 mt-8 text-primary">
-            <NuxtLink
-              v-for="{ id, name, icon, url } in aboutInfo.socials"
-              :key="id"
-              :to="url"
-              target="_blank"
-              class="flex flex-col items-center"
-            >
-              <Icon :name="icon" size="32" />
-              <span class="text-dark-strong dark:text-gray-100">{{ name }}</span>
-            </NuxtLink>
           </section>
         </section>
       </template>
