@@ -3,7 +3,7 @@ const store = useStore();
 const { eventModal } = storeToRefs(store);
 
 const image =
-  'https://res.cloudinary.com/rafamed-dev/image/upload/v1706125314/events/superbowl_vbcqdu.jpg';
+  "https://res.cloudinary.com/rafamed-dev/image/upload/v1706125314/events/superbowl_vbcqdu.jpg";
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const image =
         <div class="flex items-center justify-between gap-2">
           <h2 class="text-lg">Evento destacado</h2>
           <UButton
-            label="Ir al menú"
+            label="Cerrar"
             color="primary"
             icon="i-heroicons-arrow-left-on-rectangle-solid"
             size="md"
@@ -38,7 +38,7 @@ const image =
         </div>
       </template>
 
-      <img :src="image" alt="" class="rounded-xl" />
+      <img :src="image" alt="" class="mx-auto w-80 rounded-xl" />
     </UCard>
   </UModal>
 </template>

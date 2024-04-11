@@ -7,19 +7,34 @@ const { items, oneColumn = false } = defineProps<{
 
 <template>
   <ul
-    class="grid grid-cols-1 gap-4 lg:p-4 py-4 lg:grid-cols-2"
+    class="grid grid-cols-1 gap-4 py-4 lg:grid-cols-2 lg:p-4"
     :class="{ 'grid-cols-2 text-left': !oneColumn }"
   >
-    <li :class="{ 'mx-auto': items.length === 1 }" v-for="item in items" :key="item._id">
-      <div>
-        <h4 class="text-base font-bold text-primary">
-          {{ item.name }}
-        </h4>
+    <li
+      :class="{
+        'mx-auto': items.length === 1,
+        'border-b pb-4 dark:border-neutral-700': oneColumn,
+      }"
+      v-for="item in items"
+      :key="item._id"
+    >
+      <div
+        class="flex"
+        :class="{
+          'items-center justify-between gap-2': oneColumn,
+          'flex-col items-start': !oneColumn,
+        }"
+      >
+        <section>
+          <h4 class="text-primary text-base font-bold">
+            {{ item.name }}
+          </h4>
 
-        <p v-if="item.description">{{ item.description }}</p>
+          <p v-if="item.description">{{ item.description }}</p>
+        </section>
         <div v-if="item.price" class="flex gap-2">
           <p
-            class="dark:text-gray-100 font-bold"
+            class="font-bold dark:text-gray-100"
             :class="{ 'text-black': !item.description }"
             v-if="item.price"
           >
@@ -27,7 +42,11 @@ const { items, oneColumn = false } = defineProps<{
           </p>
         </div>
         <div v-if="item.variants">
-          <div v-for="variant in item.variants" :key="variant._id" class="flex justify-between">
+          <div
+            v-for="variant in item.variants"
+            :key="variant._id"
+            class="flex justify-between gap-2"
+          >
             <p :class="{ 'text-primary': item.description }">
               {{ variant.name }}
             </p>

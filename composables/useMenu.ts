@@ -1,4 +1,4 @@
-import { allCategories, currentCategory } from '@/sanity/queries';
+import { allCategories, currentCategory } from "@/sanity/queries";
 
 export function useMenu() {
   const categories = ref<Category[]>([]);
@@ -11,7 +11,11 @@ export function useMenu() {
   };
 
   const formatCategory = (category: CategoryFromApi): Category => {
-    return { ...category, id: category._id, createdAt: category._createdAt };
+    return {
+      ...category,
+      id: category._id,
+      createdAt: category._createdAt,
+    } as Category;
   };
 
   const getMenu = async () => {
@@ -22,7 +26,7 @@ export function useMenu() {
   const getCurrentCategory = async (slug: string) => {
     const sanity = useSanity();
     const { data } = await useAsyncData(`${slug}`, () =>
-      sanity.fetch<CategoryFromApi | null>(currentCategory, { slug })
+      sanity.fetch<CategoryFromApi | null>(currentCategory, { slug }),
     );
 
     if (data.value) {

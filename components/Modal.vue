@@ -6,7 +6,7 @@ const { surveyPageLabels } = useI18n();
 
 function closeModal() {
   openModal.value = false;
-  return navigateTo('/');
+  return navigateTo("/");
 }
 </script>
 
@@ -42,7 +42,9 @@ function closeModal() {
         </div>
       </template>
 
-      <h3 class="text-xl text-primary mb-2">{{ surveyPageLabels.modalTitle }}</h3>
+      <h3 class="text-primary mb-2 text-xl">
+        {{ surveyPageLabels.modalTitle }}
+      </h3>
       <p>{{ surveyPageLabels.modalDescription }}</p>
     </UCard>
   </UModal>

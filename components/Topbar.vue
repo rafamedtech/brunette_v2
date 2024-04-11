@@ -6,17 +6,17 @@ const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 const darkModeIcon = computed(() =>
-  isDark.value ? 'i-heroicons-sun-solid' : 'i-heroicons-moon-solid'
+  isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
 );
 
-const darkModeText = computed(() => (isDark.value ? 'Light' : 'Dark'));
+// const darkModeText = computed(() => (isDark.value ? "Light" : "Dark"));
 
 const { changeLanguage } = useI18n();
 </script>
 
 <template>
   <div
-    class="p-4 flex shadow justify-between bg-dark-strong sticky top-0 text-center z-[999] lg:hidden"
+    class="sticky top-0 z-[999] flex justify-between bg-dark-strong p-4 text-center shadow lg:hidden"
   >
     <!-- Logo on mobile -->
     <Logo />
@@ -24,19 +24,23 @@ const { changeLanguage } = useI18n();
     <section class="flex items-center gap-2">
       <ClientOnly>
         <UButton
-          :label="darkModeText"
           :icon="darkModeIcon"
           variant="ghost"
           color="gray"
+          size="xl"
           :ui="{
             inline: 'flex-col',
             rounded: 'rounded-xl',
-            color: { gray: { ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800' } },
+            color: {
+              gray: {
+                ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800',
+              },
+            },
           }"
           class="flex-1"
           @click="toggleDark()"
         />
-        <UButton
+        <!-- <UButton
           :label="language === 'es' ? 'EN' : 'ES'"
           icon="i-heroicons-arrows-up-down-solid"
           variant="ghost"
@@ -47,7 +51,7 @@ const { changeLanguage } = useI18n();
             color: { primary: { ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800' } },
           }"
           @click="changeLanguage"
-        />
+        /> -->
       </ClientOnly>
     </section>
   </div>
