@@ -27,7 +27,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
   setTimeout(async () => {
     await sendSurvey(survey);
-    await sendEmail();
+    // await sendEmail();
     openModal.value = true;
     loadingBtn.value = false;
   }, 500);
