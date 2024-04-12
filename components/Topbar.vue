@@ -1,4 +1,9 @@
 <script setup lang="ts">
+const { admin = false } = defineProps<{
+  admin?: boolean;
+}>();
+
+const user = ref(true);
 const store = useStore();
 const { language } = storeToRefs(store);
 
@@ -9,8 +14,6 @@ const darkModeIcon = computed(() =>
   isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
 );
 
-// const darkModeText = computed(() => (isDark.value ? "Light" : "Dark"));
-
 const { changeLanguage } = useI18n();
 </script>
 
@@ -20,8 +23,27 @@ const { changeLanguage } = useI18n();
   >
     <!-- Logo on mobile -->
     <Logo />
+    <span v-if="admin" class="text-primary font-bold">Administrador</span>
 
     <section class="flex items-center gap-2">
+      <UButton
+        v-if="user"
+        icon="i-heroicons-arrow-left-on-rectangle-solid"
+        variant="ghost"
+        color="gray"
+        size="xl"
+        :ui="{
+          inline: 'flex-col',
+          rounded: 'rounded-xl',
+          color: {
+            gray: {
+              ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800',
+            },
+          },
+        }"
+        class="flex-1"
+        @click="toggleDark()"
+      />
       <ClientOnly>
         <UButton
           :icon="darkModeIcon"

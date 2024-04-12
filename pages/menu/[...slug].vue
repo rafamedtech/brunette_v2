@@ -12,6 +12,7 @@ await getCurrentCategory(slug);
 const currentCategory = category.value as Category;
 
 const oneColumn = ref(false);
+const columns = ref(2);
 
 onMounted(() => {
   isLoading.value = false;
@@ -27,23 +28,11 @@ onMounted(() => {
 
       <template #content>
         <section class="relative">
-          <UCard class="lg:hidden">
-            <div class="flex items-center justify-between">
-              <p>Platillos por fila</p>
-              <div class="flex justify-center gap-2">
-                <UButton
-                  label="1"
-                  :variant="oneColumn ? 'solid' : 'outline'"
-                  @click="() => (oneColumn = true)"
-                />
-                <UButton
-                  label="2"
-                  :variant="!oneColumn ? 'solid' : 'outline'"
-                  @click="() => (oneColumn = false)"
-                />
-              </div>
-            </div>
-          </UCard>
+          <div class="flex justify-end lg:hidden">
+            <UFormGroup label="Platillos por fila">
+              <USelectMenu :options="[1, 2]" v-model="columns" />
+            </UFormGroup>
+          </div>
 
           <section
             v-if="!category?.sections"
@@ -56,11 +45,11 @@ onMounted(() => {
           <section v-else class="my-4 pb-16 md:grid md:grid-cols-2 md:gap-8">
             <div v-for="section in category?.sections" :key="section._id">
               <SectionBanner :section="section" />
-              <SectionItems :items="section.items" :one-column="oneColumn" />
+              <SectionItems :items="section.items" :columns="columns" />
             </div>
           </section>
 
-          <ScrollToTop />
+          <ScrollToTop back-link="/menu" />
         </section>
       </template>
     </MainSection>

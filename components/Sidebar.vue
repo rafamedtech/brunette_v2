@@ -1,42 +1,7 @@
 <script setup lang="ts">
-const { changeLanguage, navLinksLabels } = useI18n();
-const store = useStore();
-const { language } = storeToRefs(store);
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-const darkModeLabel = computed(() => {
-  return isDark.value ? "Light mode" : "Dark mode";
-});
-const darkModeIcon = computed(() =>
-  isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
-);
-
-const changeLanguageBtn = computed(() => {
-  return language.value === "es" ? "English" : "Español";
-});
-
-const links = computed<any>(() => {
-  return [
-    navLinksLabels.value,
-    [
-      {
-        label: darkModeLabel.value,
-        icon: darkModeIcon.value,
-        click: () => {
-          toggleDark();
-        },
-      },
-      {
-        label: changeLanguageBtn.value,
-        icon: "i-heroicons-arrows-up-down-solid",
-        click: () => {
-          changeLanguage();
-        },
-      },
-    ],
-  ];
-});
+const { items } = defineProps<{
+  items: NavLink[] | NavLink[][];
+}>();
 </script>
 
 <template>
@@ -46,7 +11,7 @@ const links = computed<any>(() => {
     </article>
     <ClientOnly>
       <UVerticalNavigation
-        :links="links"
+        :links="items"
         :ui="{
           active:
             'before:bg-gray-800 text-primary dark:text-primary border border-primary',

@@ -1,59 +1,39 @@
 <script setup lang="ts">
 import { waitersList } from "@/utils/surveyInfo";
-import type { FormError, FormSubmitEvent } from "#ui/types";
+import type { FormSubmitEvent } from "#ui/types";
+// import type { FormError, FormSubmitEvent } from "#ui/types";
 
-const validate = (state: any): FormError[] => {
-  const errors = [];
-  if (!state) errors.push({ path: "email", message: "Required" });
-  if (!state.password) errors.push({ path: "password", message: "Required" });
-  return errors;
-};
+// const validate = (state: any): FormError[] => {
+//   const errors = [];
+//   if (!state) errors.push({ path: "email", message: "Required" });
+//   if (!state.password) errors.push({ path: "password", message: "Required" });
+//   return errors;
+// };
 
 const store = useStore();
 const { openModal } = storeToRefs(store);
 
 const { surveyPageLabels } = useI18n();
 
-const { surveyData, getQuestions, questions } = useSurvey();
+const { surveyData, getQuestions, questions, sendSurvey, sendEmail } =
+  useSurvey();
 await getQuestions();
 
 const loadingBtn = ref(false);
 async function onSubmit(event: FormSubmitEvent<any>) {
+  const survey = { ...event.data, questions: questions.value };
+
   loadingBtn.value = true;
 
   setTimeout(async () => {
-    await sendSurvey(surveyData);
+    await sendSurvey(survey);
+    await sendEmail();
     openModal.value = true;
     loadingBtn.value = false;
-  }, 1000);
+  }, 500);
 }
 
 const ratings = [1, 2, 3, 4, 5];
-// const ratings = ["1", "2", "3", "4", "5"];
-
-const isLoading = ref(false);
-
-async function sendSurvey(survey: any) {
-  try {
-    await $fetch(`/api/survey`, {
-      method: "POST",
-      body: { survey },
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function formSubmit() {
-  // isLoading.value = true;
-
-  await sendSurvey(surveyData);
-
-  // setTimeout(() => {
-  //   isLoading.value = false;
-  //   openModal.value = true;
-  // }, 1000);
-}
 </script>
 
 <template>

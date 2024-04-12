@@ -1,19 +1,19 @@
 <script setup lang="ts">
-const { items, oneColumn = false } = defineProps<{
+const { items, columns } = defineProps<{
   items: Item[];
-  oneColumn: boolean;
+  columns: number;
 }>();
 </script>
 
 <template>
   <ul
     class="grid grid-cols-1 gap-4 py-4 lg:grid-cols-2 lg:p-4"
-    :class="{ 'grid-cols-2 text-left': !oneColumn }"
+    :class="{ 'grid-cols-2 text-left': columns === 2 }"
   >
     <li
       :class="{
         'mx-auto': items.length === 1,
-        'border-b pb-4 dark:border-neutral-700': oneColumn,
+        'border-b pb-4 dark:border-neutral-700': columns === 1,
       }"
       v-for="item in items"
       :key="item._id"
@@ -21,8 +21,8 @@ const { items, oneColumn = false } = defineProps<{
       <div
         class="flex"
         :class="{
-          'items-center justify-between gap-2': oneColumn,
-          'flex-col items-start': !oneColumn,
+          'items-center justify-between gap-2': columns === 1,
+          'flex-col items-start': columns === 2,
         }"
       >
         <section>

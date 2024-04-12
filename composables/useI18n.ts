@@ -95,7 +95,7 @@ export function useI18n() {
         };
   });
 
-  const navLinksLabels = computed(() => {
+  const navLinksLabels = computed<NavLink[]>(() => {
     return [
       {
         label: language.value === "es" ? "Menú" : "Menu",

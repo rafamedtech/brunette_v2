@@ -1,5 +1,6 @@
-<script setup>
-const { navLinksLabels } = useI18n();
+<script setup lang="ts">
+// const { navLinksLabels } = useI18n();
+const { items } = defineProps<{ items: NavLink[] | NavLink[][] }>();
 </script>
 
 <template>
@@ -14,7 +15,7 @@ const { navLinksLabels } = useI18n();
       inactive: 'hover:text-white text-gray-400 hover:before:bg-gray-800/50',
       icon: { active: 'text-gray-200', inactive: 'text-gray-500' },
     }"
-    :links="navLinksLabels"
-    class="fixed z-[999] bottom-0 bg-dark-strong"
+    :links="items"
+    class="fixed bottom-0 z-[999] bg-dark-strong"
   />
 </template>
