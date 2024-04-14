@@ -1,11 +1,12 @@
 <script setup lang="ts">
+// import { LogoutModal } from "#components";
 const { admin = false } = defineProps<{
   admin?: boolean;
 }>();
 
-const user = ref(true);
-const store = useStore();
-const { language } = storeToRefs(store);
+// const user = useSupabaseUser();
+// const store = useStore();
+// const { language } = storeToRefs(store);
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -14,7 +15,11 @@ const darkModeIcon = computed(() =>
   isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
 );
 
-const { changeLanguage } = useI18n();
+// const { changeLanguage } = useI18n();
+// const modal = useModal();
+// function toggleLogout() {
+//   modal.open(LogoutModal, {});
+// }
 </script>
 
 <template>
@@ -27,7 +32,6 @@ const { changeLanguage } = useI18n();
 
     <section class="flex items-center gap-2">
       <UButton
-        v-if="user"
         icon="i-heroicons-arrow-left-on-rectangle-solid"
         variant="ghost"
         color="gray"
@@ -42,7 +46,6 @@ const { changeLanguage } = useI18n();
           },
         }"
         class="flex-1"
-        @click="toggleDark()"
       />
       <ClientOnly>
         <UButton

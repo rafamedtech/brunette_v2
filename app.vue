@@ -11,6 +11,8 @@ const { loadingScreen } = storeToRefs(store);
 
     <Modal />
     <EventModal />
+    <UModals />
+
     <FullscreenEvents />
 
     <Loader v-if="loadingScreen" />

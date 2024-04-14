@@ -12,11 +12,12 @@ onMounted(() => {
 
 definePageMeta({
   layout: "admin",
+  middleware: "auth",
 });
 </script>
 
 <template>
-  <main>
+  <main class="relative">
     <MainSection :loading="isLoading">
       <template #heading>
         <AppHeading

@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "brunette-demo",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@nuxtjs/sanity": "^1.8.3",
+    "@nuxtjs/supabase": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
     "@prisma/client": "^5.12.1",
     "@vueuse/nuxt": "^10.7.2",

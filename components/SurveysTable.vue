@@ -63,8 +63,12 @@ const { getRating } = useSurvey();
 
     <template #rating-data="{ row }">
       <span
-        class="hidden text-center md:block"
-        :class="{ 'text-primary font-bold': getRating(row) === 5 }"
+        class="hidden text-center font-bold md:block"
+        :class="{
+          'text-primary': getRating(row) === 5,
+          'text-yellow-500': getRating(row) < 5 && getRating(row) >= 4,
+          'text-red-500': getRating(row) < 4,
+        }"
         >{{ getRating(row) }}</span
       >
     </template>
@@ -76,7 +80,6 @@ const { getRating } = useSurvey();
         size="sm"
         icon="i-heroicons-arrow-top-right-on-square"
         :to="`/admin/encuestas/${row.id}`"
-        label="Abrir"
         inline
         :ui="{ inline: 'flex-col' }"
       >

@@ -26,7 +26,7 @@ const fortmatDate = (date: Date | string | undefined) => {
 
 definePageMeta({
   layout: "admin",
-  
+  middleware: "auth",
 });
 </script>
 
@@ -43,8 +43,12 @@ definePageMeta({
       <template #content>
         <section class="flex flex-col gap-4 max-w-xl mx-auto">
           <section class="flex flex-col w-fit mx-auto text-center">
-            <h4 class="text-primary font-bold text-2xl">Rating</h4>
-            <span class="text-3xl">{{ getRating(currentSurvey) }}</span>
+            <h4 class=" font-bold text-2xl">Rating</h4>
+            <span class="text-3xl"   :class="{
+          'text-primary': getRating(currentSurvey) === 5,
+          'text-yellow-500': getRating(currentSurvey) < 5 && getRating(currentSurvey) >= 4,
+          'text-red-500': getRating(currentSurvey) < 4,
+        }">{{ getRating(currentSurvey) }}</span>
           </section>
           <UCard>
             <template #header>
