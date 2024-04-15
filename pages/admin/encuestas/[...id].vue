@@ -48,7 +48,7 @@ definePageMeta({
           'text-primary': getRating(currentSurvey) === 5,
           'text-yellow-500': getRating(currentSurvey) < 5 && getRating(currentSurvey) >= 4,
           'text-red-500': getRating(currentSurvey) < 4,
-        }">{{ getRating(currentSurvey) }}</span>
+        }">{{ getRating(currentSurvey).toFixed(2) }}</span>
           </section>
           <UCard>
             <template #header>

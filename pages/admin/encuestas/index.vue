@@ -58,7 +58,7 @@ definePageMeta({
                     class="text-lg"
                     :class="{ 'text-primary font-bold': getGlobalRating === 5 }"
                   >
-                    {{ getGlobalRating }}
+                    {{ getGlobalRating.toFixed(2) }}
                   </div>
                 </div>
               </section>
