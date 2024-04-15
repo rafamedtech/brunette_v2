@@ -4,7 +4,7 @@ const { admin = false } = defineProps<{
   admin?: boolean;
 }>();
 
-// const user = useSupabaseUser();
+const user = useSupabaseUser();
 // const store = useStore();
 // const { language } = storeToRefs(store);
 
@@ -32,6 +32,7 @@ function toggleLogout() {
 
     <section class="flex items-center gap-2">
       <UButton
+        v-if="user"
         icon="i-heroicons-arrow-left-on-rectangle-solid"
         variant="ghost"
         color="gray"
