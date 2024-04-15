@@ -16,6 +16,6 @@ const { items } = defineProps<{ items: NavLink[] | NavLink[][] }>();
       icon: { active: 'text-gray-200', inactive: 'text-gray-500' },
     }"
     :links="items"
-    class="fixed bottom-0 z-[999] bg-dark-strong"
+    class="fixed bottom-0 z-[49] bg-dark-strong"
   />
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import { LogoutModal } from "#components";
+import { LogoutModal } from "#components";
 const { admin = false } = defineProps<{
   admin?: boolean;
 }>();
@@ -16,15 +16,15 @@ const darkModeIcon = computed(() =>
 );
 
 // const { changeLanguage } = useI18n();
-// const modal = useModal();
-// function toggleLogout() {
-//   modal.open(LogoutModal, {});
-// }
+const modal = useModal();
+function toggleLogout() {
+  modal.open(LogoutModal, {});
+}
 </script>
 
 <template>
   <div
-    class="sticky top-0 z-[999] flex justify-between bg-dark-strong p-4 text-center shadow lg:hidden"
+    class="sticky top-0 z-[49] flex justify-between bg-dark-strong p-4 text-center shadow lg:hidden"
   >
     <!-- Logo on mobile -->
     <Logo />
@@ -46,6 +46,7 @@ const darkModeIcon = computed(() =>
           },
         }"
         class="flex-1"
+        @click="toggleLogout"
       />
       <ClientOnly>
         <UButton

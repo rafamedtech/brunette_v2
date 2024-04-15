@@ -16,7 +16,7 @@ function logout() {
 </script>
 
 <template>
-  <UModal prevent-close>
+  <UModal prevent-close :ui="{ overlay: { background: 'bg-gray-800/75' } }">
     <UCard
       :ui="{
         ring: '',
@@ -37,7 +37,7 @@ function logout() {
           <UButton label="Cancelar" color="gray" @click="modal.close()" />
           <UButton
             :loading="buttonLoading"
-            label="Salir"
+            :label="buttonLoading ? 'Cerrando sesión...' : 'Confirmar'"
             icon="i-heroicons-arrow-left-end-on-rectangle"
             color="primary"
             @click="logout"

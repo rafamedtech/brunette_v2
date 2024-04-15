@@ -6,12 +6,14 @@ export function useI18n() {
     return language.value === "es"
       ? {
           title: "Acerca del restaurant",
+          description: "Conoce más sobre nuestro restaurante",
           address: "Dirección:",
           phone: "Teléfono:",
           schedule: "Horario:",
         }
       : {
           title: "About the restaurant",
+          description: "Learn more about our restaurant",
           address: "Address:",
           phone: "Phone:",
           schedule: "Schedule:",

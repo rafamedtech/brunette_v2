@@ -1,5 +1,8 @@
+import { LogoutModal } from "#components";
+
 export function useNav() {
   const { navLinksLabels } = useI18n();
+
   const isDark = useDark();
   const toggleDark = useToggle(isDark);
   const darkModeLabel = computed(() => {
@@ -31,6 +34,11 @@ export function useNav() {
     ];
   });
 
+  const modal = useModal();
+  function toggleLogout() {
+    modal.open(LogoutModal, {});
+  }
+
   const adminLinks = computed(() => {
     return [
       [
@@ -52,7 +60,7 @@ export function useNav() {
         {
           label: "Ajustes",
           icon: "i-heroicons-cog",
-          to: "/admin/configuracion",
+          to: "/admin/ajustes",
         },
       ] as NavLink[],
       [
@@ -67,7 +75,7 @@ export function useNav() {
           label: "Cerrar sesión",
           icon: "i-heroicons-arrow-left-on-rectangle-solid",
           click: () => {
-            toggleDark();
+            toggleLogout();
           },
         },
       ] as NavLink[],

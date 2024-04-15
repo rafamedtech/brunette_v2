@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  loading: boolean;
+  loading?: boolean;
 }
 
 defineProps<Props>();
@@ -8,12 +8,19 @@ defineProps<Props>();
 
 <template>
   <section class="min-h-dvh w-full">
-    <section class="lg:pt-8 pt-8">
+    <section class="pt-8 lg:pt-8">
       <slot name="heading"></slot>
     </section>
 
-    <div v-if="loading" class="w-full flex justify-center h-[70vh] items-center">
-      <Icon name="icon-park-outline:loading-four" size="48" class="animate-spin" />
+    <div
+      v-if="loading"
+      class="flex h-[70vh] w-full items-center justify-center"
+    >
+      <Icon
+        name="icon-park-outline:loading-four"
+        size="48"
+        class="animate-spin"
+      />
     </div>
 
     <section class="pb-24 pt-8" v-else>

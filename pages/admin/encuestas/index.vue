@@ -10,6 +10,16 @@ onMounted(() => {
   isLoading.value = false;
 });
 
+useHead({
+  title: "Encuestas",
+  meta: [
+    {
+      name: "description",
+      content: "Encuestas de satisfacción de los clientes.",
+    },
+  ],
+});
+
 definePageMeta({
   layout: "admin",
   middleware: "auth",

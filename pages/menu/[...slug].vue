@@ -11,11 +11,20 @@ await getCurrentCategory(slug);
 
 const currentCategory = category.value as Category;
 
-const oneColumn = ref(false);
-const columns = ref(2);
+const columns = ref(1);
 
 onMounted(() => {
   isLoading.value = false;
+});
+
+useHead({
+  title: currentCategory.name,
+  meta: [
+    {
+      name: "description",
+      content: currentCategory.description,
+    },
+  ],
 });
 </script>
 
@@ -28,11 +37,11 @@ onMounted(() => {
 
       <template #content>
         <section class="relative">
-          <div class="flex justify-end lg:hidden">
+          <!-- <div class="flex justify-end lg:hidden">
             <UFormGroup label="Platillos por fila">
               <USelectMenu :options="[1, 2]" v-model="columns" />
             </UFormGroup>
-          </div>
+          </div> -->
 
           <section
             v-if="!category?.sections"

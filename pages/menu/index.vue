@@ -11,6 +11,16 @@ await getMenu();
 onMounted(() => {
   isLoading.value = false;
 });
+
+useHead({
+  title: menuPageLabels.value.title,
+  meta: [
+    {
+      name: "description",
+      content: menuPageLabels.value.description,
+    },
+  ],
+});
 </script>
 
 <template>
@@ -21,7 +31,7 @@ onMounted(() => {
       </template>
 
       <template #content>
-        <section class="grid md:pt-4 md:grid-cols-2 gap-6 md:gap-8 md:px-2">
+        <section class="grid gap-6 md:grid-cols-2 md:gap-8 md:px-2 md:pt-4">
           <CategoryCard
             v-for="category in categories"
             :key="category.id"

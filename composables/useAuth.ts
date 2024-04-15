@@ -43,17 +43,6 @@ export function useAuth() {
     } catch (error) {
       console.log(error);
     }
-
-    try {
-      await $fetch("/api/_supabase/session", {
-        method: "POST",
-        body: { event: "SIGNED_OUT", session: null },
-      });
-      user.value = null;
-    } catch (error) {
-      console.error(error);
-    }
-
     await navigateTo("/login");
   }
 

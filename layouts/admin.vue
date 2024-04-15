@@ -3,7 +3,7 @@ const { adminLinks } = useNav();
 </script>
 
 <template>
-  <main class="relative flex w-full justify-between lg:pt-0">
+  <main class="relative z-0 flex w-full justify-between lg:pt-0">
     <section class="hidden justify-between lg:flex lg:w-1/6">
       <Sidebar :items="adminLinks" />
     </section>

@@ -10,13 +10,26 @@ onMounted(() => {
 
 const { getQuestions } = useSurvey();
 await getQuestions();
+
+useHead({
+  title: surveyPageLabels.value.title,
+  meta: [
+    {
+      name: "description",
+      content: surveyPageLabels.value.description,
+    },
+  ],
+});
 </script>
 
 <template>
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <AppHeading :title="surveyPageLabels.title" :description="surveyPageLabels.description" />
+        <AppHeading
+          :title="surveyPageLabels.title"
+          :description="surveyPageLabels.description"
+        />
       </template>
 
       <template #content>

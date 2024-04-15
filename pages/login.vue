@@ -123,7 +123,7 @@ definePageMeta({
 
           <UButton
             :loading="isLoading"
-            label="Iniciar sesión"
+            :label="isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'"
             type="submit"
             class="mx-auto w-fit"
           />

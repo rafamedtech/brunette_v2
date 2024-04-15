@@ -11,6 +11,16 @@ const { eventsPageLabels } = useI18n();
 onMounted(() => {
   isLoading.value = false;
 });
+
+useHead({
+  title: eventsPageLabels.value.title,
+  meta: [
+    {
+      name: "description",
+      content: eventsPageLabels.value.description,
+    },
+  ],
+});
 </script>
 
 <template>

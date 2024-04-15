@@ -12,6 +12,7 @@ const { loadingScreen } = storeToRefs(store);
     <Modal />
     <EventModal />
     <UModals />
+    <UNotifications />
 
     <FullscreenEvents />
 
