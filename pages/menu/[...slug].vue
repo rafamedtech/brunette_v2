@@ -37,12 +37,6 @@ useHead({
 
       <template #content>
         <section class="relative">
-          <!-- <div class="flex justify-end lg:hidden">
-            <UFormGroup label="Platillos por fila">
-              <USelectMenu :options="[1, 2]" v-model="columns" />
-            </UFormGroup>
-          </div> -->
-
           <section
             v-if="!category?.sections"
             class="content flex min-h-[60vh] flex-col items-center justify-center px-4"

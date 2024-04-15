@@ -64,21 +64,6 @@ definePageMeta({
               </section>
             </UCard>
           </section>
-          <!-- <div class="flex items-center justify-between px-8 font-bold">
-            <h4>Mesero</h4>
-            <h4>Fecha</h4>
-          </div>
-          <NuxtLink
-            v-for="{ id, waiter, createdAt } in surveys"
-            :to="`/admin/encuestas/${id}`"
-          >
-            <UCard>
-              <section class="flex justify-between">
-                <h3>{{ waiter }}</h3>
-                <span class="text-primary">{{ fortmatDate(createdAt) }}</span>
-              </section>
-            </UCard>
-          </NuxtLink> -->
 
           <SurveysTable :surveys="surveys" />
         </section>
