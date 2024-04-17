@@ -28,7 +28,7 @@ definePageMeta({
 
 <template>
   <main class="relative">
-    <MainSection :loading="isLoading">
+    <MainSection :loading="isLoading" padded>
       <template #heading>
         <AppHeading
           title="Encuestas"

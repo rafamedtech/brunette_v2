@@ -1,17 +1,7 @@
 <script setup lang="ts">
+import { SurveyModal } from "#components";
 import { waitersList } from "@/utils/surveyInfo";
 import type { FormSubmitEvent } from "#ui/types";
-// import type { FormError, FormSubmitEvent } from "#ui/types";
-
-// const validate = (state: any): FormError[] => {
-//   const errors = [];
-//   if (!state) errors.push({ path: "email", message: "Required" });
-//   if (!state.password) errors.push({ path: "password", message: "Required" });
-//   return errors;
-// };
-
-const store = useStore();
-const { openModal } = storeToRefs(store);
 
 const { surveyPageLabels } = useI18n();
 
@@ -19,6 +9,7 @@ const { surveyData, getQuestions, questions, sendSurvey, sendEmail } =
   useSurvey();
 await getQuestions();
 
+const modal = useModal();
 const loadingBtn = ref(false);
 async function onSubmit(event: FormSubmitEvent<any>) {
   const survey = { ...event.data, questions: questions.value };
@@ -28,7 +19,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
   setTimeout(async () => {
     await sendSurvey(survey);
     // await sendEmail();
-    openModal.value = true;
+    modal.open(SurveyModal, {});
     loadingBtn.value = false;
   }, 500);
 }

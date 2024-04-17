@@ -64,12 +64,12 @@ export function useI18n() {
       ? {
           title: "Eventos",
           description: "Encuentra nuestros eventos y promociones",
-          fullscreenButton: "Ampliar",
+          fullscreenButton: "Galería",
         }
       : {
           title: "Events",
           description: "Find our events and promotions",
-          fullscreenButton: "Full screen",
+          fullscreenButton: "Gallery",
         };
   });
 

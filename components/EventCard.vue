@@ -26,7 +26,7 @@ const { name, description, cover } = event;
       <h2 class="text-primary text-center text-2xl font-bold uppercase">
         {{ name }}
       </h2>
-      <p class="text-gray-100">{{ description }}</p>
+      <p class="text-center text-gray-100">{{ description }}</p>
     </section>
   </UCard>
 </template>

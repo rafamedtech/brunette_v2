@@ -30,7 +30,7 @@ useHead({
 
 <template>
   <main>
-    <MainSection :loading="isLoading">
+    <MainSection :loading="isLoading" padded>
       <template #heading>
         <AppHeading :title="aboutPageLabels.title" />
       </template>

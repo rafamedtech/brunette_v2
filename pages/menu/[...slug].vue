@@ -32,7 +32,7 @@ useHead({
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <CategoryCard :category="currentCategory" title-size="large" />
+        <CategoryCard :category="currentCategory" rounded title-size="large" />
       </template>
 
       <template #content>
@@ -45,7 +45,7 @@ useHead({
             <p class="text-lg">No hay nada aquí aún.</p>
           </section>
 
-          <section v-else class="my-4 pb-16 md:grid md:grid-cols-2 md:gap-8">
+          <section v-else class="pb-16 md:grid md:grid-cols-2 md:gap-8">
             <div v-for="section in category?.sections" :key="section._id">
               <SectionBanner :section="section" />
               <SectionItems :items="section.items" :columns="columns" />

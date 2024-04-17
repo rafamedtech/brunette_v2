@@ -1,14 +1,13 @@
 <script setup lang="ts">
-interface Props {
+const { padded = true } = defineProps<{
   loading?: boolean;
-}
-
-defineProps<Props>();
+  padded?: boolean;
+}>();
 </script>
 
 <template>
   <section class="min-h-dvh w-full">
-    <section class="pt-8 lg:pt-8">
+    <section :class="{ 'pt-4': !padded, 'pt-8': padded }">
       <slot name="heading"></slot>
     </section>
 

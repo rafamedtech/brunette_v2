@@ -1,18 +1,13 @@
 <script setup lang="ts">
-const store = useStore();
-const { openModal } = storeToRefs(store);
+const { event } = defineProps<{
+  event: Evento;
+}>();
 
-const { surveyPageLabels } = useI18n();
-
-function closeModal() {
-  openModal.value = false;
-  return navigateTo("/");
-}
+const modal = useModal();
 </script>
 
 <template>
   <UModal
-    v-model="openModal"
     prevent-close
     :ui="{
       wrapper: 'z-[999999]',
@@ -30,22 +25,23 @@ function closeModal() {
     >
       <template #header>
         <div class="flex items-center justify-between gap-2">
-          <h2 class="text-lg">{{ surveyPageLabels.done }}</h2>
+          <h2 class="text-lg">{{ event.name }}</h2>
           <UButton
-            :label="surveyPageLabels.exit"
+            label="Cerrar"
             color="primary"
             icon="i-heroicons-arrow-left-on-rectangle-solid"
             size="md"
             class="-my-1"
-            @click="closeModal"
+            @click="modal.close()"
           />
         </div>
       </template>
 
-      <h3 class="text-primary mb-2 text-xl">
-        {{ surveyPageLabels.modalTitle }}
-      </h3>
-      <p>{{ surveyPageLabels.modalDescription }}</p>
+      <img :src="event.cover" alt="" class="mx-auto h-full w-80 rounded-xl" />
+
+      <template #footer>
+        <p>{{ event.description }}</p>
+      </template>
     </UCard>
   </UModal>
 </template>

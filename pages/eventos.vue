@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { EventDetails } from "#components";
 import { allEvents } from "@/sanity/queries";
 
 const store = useStore();
@@ -7,6 +8,11 @@ const { isLoading, fullscreenEvents } = storeToRefs(store);
 const { data: events } = useSanityQuery<Evento[]>(allEvents);
 
 const { eventsPageLabels } = useI18n();
+
+const modal = useModal();
+function openDetails(event: Evento) {
+  modal.open(EventDetails, { event });
+}
 
 onMounted(() => {
   isLoading.value = false;
@@ -25,7 +31,7 @@ useHead({
 
 <template>
   <main>
-    <MainSection :loading="isLoading">
+    <MainSection :loading="isLoading" padded>
       <template #heading>
         <AppHeading
           :title="eventsPageLabels.title"
@@ -42,7 +48,23 @@ useHead({
             class="mx-auto"
             @click="fullscreenEvents = true"
           />
-          <EventCarousel :events="events" />
+          <!-- <EventCarousel :events="events" /> -->
+
+          <section class="grid grid-cols-2 gap-4">
+            <UCard
+              v-for="event in events"
+              :key="event._id"
+              class="rounded-xl"
+              :ui="{ body: { padding: '' } }"
+              @click="openDetails(event)"
+            >
+              <img
+                :src="event.cover"
+                :alt="event.name"
+                class="h-64 w-full rounded-xl object-cover"
+              />
+            </UCard>
+          </section>
         </section>
 
         <!-- Events on desktop -->

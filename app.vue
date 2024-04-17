@@ -9,8 +9,8 @@ const { loadingScreen } = storeToRefs(store);
       <NuxtPage />
     </NuxtLayout>
 
-    <Modal />
-    <EventModal />
+    <!-- <Modal /> -->
+    <!-- <EventModal /> -->
     <UModals />
     <UNotifications />
 

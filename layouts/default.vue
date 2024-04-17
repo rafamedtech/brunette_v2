@@ -11,12 +11,14 @@ const { navLinksLabels } = useI18n();
 
     <div class="flex-auto transition-all lg:w-5/6">
       <Topbar />
-      <div
-        class="min-h-screen bg-gray-100 px-4 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
+      <UContainer
+        class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
       >
         <slot> </slot>
-      </div>
+      </UContainer>
       <BottomNavbar :items="navLinksLabels" class="lg:hidden" />
+
+      <EventModal />
     </div>
   </main>
 </template>
