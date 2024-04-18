@@ -27,7 +27,7 @@ definePageMeta({
 </script>
 
 <template>
-  <main class="relative">
+  <main>
     <MainSection :loading="isLoading" padded>
       <template #heading>
         <AppHeading

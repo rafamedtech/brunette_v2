@@ -14,12 +14,12 @@ const columns = [
     label: "Mesero",
     sortable: true,
   },
-  {
-    key: "rating",
-    label: "Rating",
-    sortable: true,
-    class: "hidden md:block",
-  },
+  // {
+  //   key: "rating",
+  //   label: "Rating",
+  //   sortable: true,
+  //   class: "hidden absolute md:static md:block",
+  // },
   {
     key: "actions",
     label: "",
@@ -28,8 +28,7 @@ const columns = [
 
 const fortmatDate = (date: Date | string | undefined) => {
   const dateOptions: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "short",
+    month: "long",
     day: "numeric",
   };
   if (date === undefined) return;
@@ -56,14 +55,15 @@ const { getRating } = useSurvey();
       th: { color: 'text-primary' },
       default: { sortButton: { color: 'primary' } },
     }"
+    class="w-full"
   >
     <template #createdAt-data="{ row }">
       {{ fortmatDate(row.createdAt) }}
     </template>
-
+    <!-- 
     <template #rating-data="{ row }">
       <span
-        class="hidden text-center font-bold md:block"
+        class="absolute hidden text-center font-bold md:static md:block"
         :class="{
           'text-primary': getRating(row) === 5,
           'text-yellow-500': getRating(row) < 5 && getRating(row) >= 4,
@@ -71,7 +71,7 @@ const { getRating } = useSurvey();
         }"
         >{{ getRating(row) }}</span
       >
-    </template>
+    </template> -->
 
     <template #actions-data="{ row }">
       <UButton
