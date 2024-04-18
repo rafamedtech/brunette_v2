@@ -10,11 +10,11 @@ const { adminLinks } = useNav();
 
     <div class="flex-auto transition-all lg:w-5/6">
       <Topbar admin />
-      <div
-        class="min-h-screen bg-gray-100 px-4 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
+      <UContainer
+        class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
       >
         <slot> </slot>
-      </div>
+      </UContainer>
       <BottomNavbar :items="adminLinks[0]" class="lg:hidden" />
     </div>
   </main>
