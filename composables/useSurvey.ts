@@ -70,6 +70,23 @@ export function useSurvey() {
     }
   }
 
+  const markSurveyAsRead = async (survey: SurveyWithQuestions) => {
+    const { data } = await $fetch(`/api/surveys/${survey.id}/read`, {
+      method: "PUT",
+      body: { survey },
+    });
+    survey.new = data.new;
+
+    if (!survey.new) {
+      toast.add({
+        title: "Encuesta marcada como leída",
+        color: "green",
+        icon: "i-heroicons-check-circle",
+        timeout: 3000,
+      });
+    }
+  };
+
   const getRating = (survey: SurveyWithQuestions) => {
     const rating = survey.questions.reduce((acc, question) => {
       return acc + question.rating;
@@ -97,6 +114,7 @@ export function useSurvey() {
     sendSurvey,
     sendEmail,
     getRating,
+    markSurveyAsRead,
     surveys,
     surveyData,
     questions,

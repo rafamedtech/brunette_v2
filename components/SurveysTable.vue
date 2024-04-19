@@ -1,47 +1,17 @@
 <script setup lang="ts">
 import type { SurveyWithQuestions } from "@/types/Survey";
+import { mobileColumns, baseColumns } from "@/utils/table-columns";
 
 const { surveys } = defineProps<{ surveys: SurveyWithQuestions[] }>();
-
-const columns = [
-  {
-    key: "createdAt",
-    label: "Fecha",
-    sortable: true,
-  },
-  {
-    key: "waiter",
-    label: "Mesero",
-    sortable: true,
-  },
-  // {
-  //   key: "rating",
-  //   label: "Rating",
-  //   sortable: true,
-  //   class: "hidden absolute md:static md:block",
-  // },
-  {
-    key: "actions",
-    label: "",
-  },
-];
-
-const fortmatDate = (date: Date | string | undefined) => {
-  const dateOptions: Intl.DateTimeFormatOptions = {
-    month: "long",
-    day: "numeric",
-  };
-  if (date === undefined) return;
-  return new Date(date).toLocaleString("es-MX", dateOptions);
-};
-
 const { getRating } = useSurvey();
+
+const { dateFormatter } = useFormatters();
 </script>
 
 <template>
   <UTable
     :rows="surveys"
-    :columns="columns"
+    :columns="mobileColumns"
     :empty-state="{
       icon: 'i-heroicons-document-text',
       label: 'No hay encuestas',
@@ -55,12 +25,70 @@ const { getRating } = useSurvey();
       th: { color: 'text-primary' },
       default: { sortButton: { color: 'primary' } },
     }"
-    class="w-full"
+    class="lg:hidden"
   >
     <template #createdAt-data="{ row }">
-      {{ fortmatDate(row.createdAt) }}
+      {{ dateFormatter("short", row.createdAt) }}
     </template>
-    <!-- 
+
+    <template #waiter-data="{ row }">
+      <NuxtLink :to="`/admin/encuestas/${row.id}`">
+        {{ row.waiter }}
+      </NuxtLink>
+    </template>
+
+    <template #new-data="{ row }">
+      <UButton
+        :color="row.new ? 'primary' : 'black'"
+        variant="ghost"
+        size="sm"
+        :icon="row.new ? 'i-heroicons-envelope' : 'i-heroicons-envelope-open'"
+        :to="`/admin/encuestas/${row.id}`"
+        inline
+        :ui="{ inline: 'flex-col' }"
+        class="w-full"
+      >
+        <span class="text-xs" :class="{ 'font-bold': row.new }">{{
+          row.new ? "Nueva" : "Leída"
+        }}</span>
+      </UButton>
+    </template>
+  </UTable>
+
+  <!-- Desktop table -->
+  <UTable
+    :rows="surveys"
+    :columns="baseColumns"
+    :empty-state="{
+      icon: 'i-heroicons-document-text',
+      label: 'No hay encuestas',
+    }"
+    :sort-button="{
+      color: 'primary',
+      variant: 'ghost',
+      square: false,
+    }"
+    :ui="{
+      th: { color: 'text-primary' },
+      default: { sortButton: { color: 'primary' } },
+    }"
+    class="hidden lg:block"
+  >
+    <template #createdAt-data="{ row }">
+      {{ dateFormatter("short", row.createdAt) }}
+    </template>
+
+    <template #waiter-data="{ row }">
+      <UButton
+        color="gray"
+        variant="link"
+        :to="`/admin/encuestas/${row.id}`"
+        :padded="false"
+      >
+        {{ row.waiter }}
+      </UButton>
+    </template>
+
     <template #rating-data="{ row }">
       <span
         class="absolute hidden text-center font-bold md:static md:block"
@@ -71,18 +99,22 @@ const { getRating } = useSurvey();
         }"
         >{{ getRating(row) }}</span
       >
-    </template> -->
+    </template>
 
-    <template #actions-data="{ row }">
+    <template #new-data="{ row }">
       <UButton
-        color="primary"
+        :color="row.new ? 'primary' : 'black'"
         variant="ghost"
         size="sm"
-        icon="i-heroicons-arrow-top-right-on-square"
+        :icon="row.new ? 'i-heroicons-envelope' : 'i-heroicons-envelope-open'"
         :to="`/admin/encuestas/${row.id}`"
         inline
         :ui="{ inline: 'flex-col' }"
+        class="w-full"
       >
+        <span class="text-xs" :class="{ 'font-bold': row.new }">{{
+          row.new ? "Nueva" : "Leída"
+        }}</span>
       </UButton>
     </template>
   </UTable>

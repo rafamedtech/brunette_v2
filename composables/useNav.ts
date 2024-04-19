@@ -1,4 +1,4 @@
-import { LogoutModal } from "#components";
+import { LogoutModal, Feedback } from "#components";
 
 export function useNav() {
   const { navLinksLabels } = useI18n();
@@ -23,13 +23,6 @@ export function useNav() {
             toggleDark();
           },
         },
-        // {
-        //   label: changeLanguageBtn.value,
-        //   icon: "i-heroicons-arrows-up-down-solid",
-        //   click: () => {
-        //     changeLanguage();
-        //   },
-        // },
       ],
     ];
   });
@@ -39,6 +32,9 @@ export function useNav() {
     modal.open(LogoutModal, {});
   }
 
+  function toggleFeedback() {
+    modal.open(Feedback, {});
+  }
   const adminLinks = computed(() => {
     return [
       [
@@ -58,10 +54,17 @@ export function useNav() {
           to: "/admin/encuestas",
         },
         {
-          label: "Ajustes",
-          icon: "i-heroicons-cog",
-          to: "/admin/ajustes",
+          label: "Ayuda",
+          icon: "i-heroicons-question-mark-circle",
+          click: () => {
+            toggleFeedback();
+          },
         },
+        // {
+        //   label: "Ajustes",
+        //   icon: "i-heroicons-cog",
+        //   click: () => {console.log('Ajustes')}
+        // },
       ] as NavLink[],
       [
         {

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   // const { invoice } = await readBody(event);
   const { id }: any = event.context.params;
 
-  assertMethod(event, ['PUT']);
+  assertMethod(event, ["PUT"]);
 
   // Update invoice with prisma
 
@@ -22,11 +22,11 @@ export default defineEventHandler(async (event) => {
   if (!invoiceToUpdate) {
     throw createError({
       statusCode: 404,
-      statusMessage: 'Invoice not found',
+      statusMessage: "Invoice not found",
     });
   }
 
   return {
-    invoiceToUpdate,
+    data: invoiceToUpdate,
   };
 });

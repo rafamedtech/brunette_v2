@@ -6,6 +6,10 @@ const { surveys, getSurveys, getGlobalRating } = useSurvey();
 
 await getSurveys();
 
+const newSurveys = computed(
+  () => surveys.value.filter((survey) => survey.new).length,
+);
+
 onMounted(() => {
   isLoading.value = false;
 });
@@ -50,7 +54,7 @@ definePageMeta({
                 </div>
                 <div class="flex flex-col items-center">
                   <h4 class="text-xl font-bold">Sin leer</h4>
-                  <div class="text-lg">{{ surveys.length }}</div>
+                  <div class="text-lg">{{ newSurveys }}</div>
                 </div>
                 <div class="flex flex-col items-center">
                   <h4 class="text-xl font-bold">Rating</h4>
