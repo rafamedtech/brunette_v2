@@ -48,9 +48,9 @@ const { dateFormatter } = useFormatters();
         :ui="{ inline: 'flex-col' }"
         class="w-full"
       >
-        <span class="text-[10px]" :class="{ 'font-bold': row.new }">{{
+        <!-- <span class="text-[10px]" :class="{ 'font-bold': row.new }">{{
           row.new ? "Nueva" : "Leída"
-        }}</span>
+        }}</span> -->
       </UButton>
     </template>
   </UTable>
