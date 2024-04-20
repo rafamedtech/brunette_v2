@@ -1,5 +1,4 @@
 export function useAuth() {
-  const user = useSupabaseUser();
   const { auth } = useSupabaseClient();
 
   const toast = useToast();
@@ -22,6 +21,7 @@ export function useAuth() {
           title: "Bienvenido",
           color: "green",
           icon: "i-heroicons-check-circle",
+          timeout: 3000,
         });
       }
 

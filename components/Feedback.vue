@@ -40,7 +40,7 @@ const validate = (state: any): FormError[] => {
 </script>
 
 <template>
-  <UModal prevent-close>
+  <UModal prevent-close :ui="{ overlay: { background: 'bg-gray-800/75' } }">
     <UCard
       :ui="{
         ring: '',

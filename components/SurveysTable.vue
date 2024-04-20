@@ -23,17 +23,22 @@ const { dateFormatter } = useFormatters();
     }"
     :ui="{
       th: { color: 'text-primary' },
+      td: { padding: 'px-2', base: 'w-fit' },
       default: { sortButton: { color: 'primary' } },
     }"
     class="lg:hidden"
   >
     <template #createdAt-data="{ row }">
-      {{ dateFormatter("short", row.createdAt) }}
+      <span :class="{ 'font-bold': row.new }" class="block w-fit max-w-fit">{{
+        dateFormatter("short", row.createdAt)
+      }}</span>
     </template>
 
     <template #waiter-data="{ row }">
       <NuxtLink :to="`/admin/encuestas/${row.id}`">
-        {{ row.waiter }}
+        <span :class="{ 'font-bold': row.new }">
+          {{ row.waiter }}
+        </span>
       </NuxtLink>
     </template>
 
@@ -46,12 +51,8 @@ const { dateFormatter } = useFormatters();
         :to="`/admin/encuestas/${row.id}`"
         inline
         :ui="{ inline: 'flex-col' }"
-        class="w-full"
-      >
-        <!-- <span class="text-[10px]" :class="{ 'font-bold': row.new }">{{
-          row.new ? "Nueva" : "Leída"
-        }}</span> -->
-      </UButton>
+        class="w-fit"
+      />
     </template>
   </UTable>
 
@@ -75,7 +76,9 @@ const { dateFormatter } = useFormatters();
     class="hidden lg:block"
   >
     <template #createdAt-data="{ row }">
-      {{ dateFormatter("short", row.createdAt) }}
+      <span :class="{ 'font-bold': row.new }">{{
+        dateFormatter("short", row.createdAt)
+      }}</span>
     </template>
 
     <template #waiter-data="{ row }">
@@ -85,17 +88,20 @@ const { dateFormatter } = useFormatters();
         :to="`/admin/encuestas/${row.id}`"
         :padded="false"
       >
-        {{ row.waiter }}
+        <span :class="{ 'font-bold': row.new }" class="hover:text-primary">{{
+          row.waiter
+        }}</span>
       </UButton>
     </template>
 
     <template #rating-data="{ row }">
       <span
-        class="absolute hidden text-center font-bold md:static md:block"
+        class="absolute hidden text-center md:static md:block"
         :class="{
           'text-primary': getRating(row) === 5,
           'text-yellow-500': getRating(row) < 5 && getRating(row) >= 4,
           'text-red-500': getRating(row) < 4,
+          'font-bold': row.new,
         }"
         >{{ getRating(row) }}</span
       >
@@ -104,13 +110,13 @@ const { dateFormatter } = useFormatters();
     <template #new-data="{ row }">
       <UButton
         :color="row.new ? 'primary' : 'black'"
-        variant="ghost"
+        variant="link"
         size="sm"
         :icon="row.new ? 'i-heroicons-envelope' : 'i-heroicons-envelope-open'"
         :to="`/admin/encuestas/${row.id}`"
         inline
         :ui="{ inline: 'flex-col' }"
-        class="w-full"
+        class="mx-auto w-full"
       >
         <span class="text-xs" :class="{ 'font-bold': row.new }">{{
           row.new ? "Nueva" : "Leída"

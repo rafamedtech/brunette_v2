@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from "#ui/types";
+
 const user = useSupabaseUser();
-// const { userLogin } = useAuthStore();
 const { userLogin } = useAuth();
 
 const store = useStore();
@@ -43,41 +43,16 @@ onMounted(() => {
 });
 
 useHead({
-  title: "Iniciar sesión | Cotizador",
+  title: "Iniciar sesión | Brunette administrador",
 });
 
 definePageMeta({
   layout: false,
 });
-
-// const isDark = useDark();
-// const toggleDark = useToggle(isDark);
-
-// const darkModeIcon = computed(() =>
-//   isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
-// );
 </script>
 
 <template>
   <main class="relative min-h-screen overflow-x-hidden dark:bg-dark-medium">
-    <!-- <UButton
-      :icon="darkModeIcon"
-      variant="ghost"
-      color="gray"
-      size="xl"
-      :ui="{
-        inline: 'flex-col',
-        rounded: 'rounded-xl',
-        color: {
-          gray: {
-            ghost: 'text-gray-600 hover:text-gray-200 hover:text-gray-800',
-          },
-        },
-      }"
-      class="absolute right-4 top-4 flex-1"
-      @click="toggleDark()"
-    /> -->
-
     <section
       class="mx-auto flex flex-col flex-wrap items-center justify-center px-5 py-24 text-gray-400 lg:gap-8"
     >

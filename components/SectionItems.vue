@@ -13,17 +13,13 @@ const { items, columns } = defineProps<{
     <li
       :class="{
         'mx-auto': items.length === 1,
-        'border-b pb-4 dark:border-neutral-700': columns === 1,
+        'border-b pb-4 dark:border-neutral-700 md:border-none': columns === 1,
       }"
       v-for="item in items"
       :key="item._id"
     >
       <div
-        class="flex"
-        :class="{
-          'items-center justify-between gap-2': columns === 1,
-          'flex-col items-start': columns === 2,
-        }"
+        class="flex items-center justify-between gap-4 md:flex-col md:items-stretch md:gap-2"
       >
         <section>
           <h4 class="text-primary text-base font-bold">
@@ -32,7 +28,7 @@ const { items, columns } = defineProps<{
 
           <p v-if="item.description">{{ item.description }}</p>
         </section>
-        <div v-if="item.price" class="flex gap-2">
+        <div v-if="item.price" class="flex justify-end gap-2">
           <p
             class="font-bold dark:text-gray-100"
             :class="{ 'text-black': !item.description }"
