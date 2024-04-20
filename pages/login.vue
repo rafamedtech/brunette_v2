@@ -81,7 +81,7 @@ definePageMeta({
                 id="email"
                 placeholder="Ej. correo@ejemplo.com"
                 autocomplete="off"
-                size="lg"
+                size="xl"
               />
             </UFormGroup>
 
@@ -90,7 +90,7 @@ definePageMeta({
                 v-model="formData.password"
                 type="password"
                 id="password"
-                size="lg"
+                size="xl"
                 placeholder="*********"
               />
             </UFormGroup>
