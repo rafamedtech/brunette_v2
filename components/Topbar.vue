@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogoutModal } from "#components";
+import { LogoutModal, Feedback } from "#components";
 const { admin = false } = defineProps<{
   admin?: boolean;
 }>();
@@ -15,13 +15,17 @@ const darkModeIcon = computed(() =>
   isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",
 );
 
-// const { changeLanguage } = useI18n();
 const modal = useModal();
+const toggleFeedback = () => {
+  modal.open(Feedback, {});
+};
+
+// const { changeLanguage } = useI18n();
 function toggleLogout() {
   modal.open(LogoutModal, {});
 }
 
-const items = computed<any>(() => {
+const items = computed<unknown>(() => {
   return [
     [
       {
@@ -41,18 +45,11 @@ const items = computed<any>(() => {
           toggleLogout();
         },
       },
-      // {
-      //   label: "",
-      //   icon: darkModeIcon.value,
-      //   click: () => {
-      //     toggleDark();
-      //   },
-      // },
       {
         label: "¿Necesitas ayuda?",
         icon: "i-heroicons-question-mark-circle",
         click: () => {
-          // toggleFeedback();
+          toggleFeedback();
         },
       },
     ],
@@ -69,24 +66,6 @@ const items = computed<any>(() => {
     <span v-if="admin" class="text-primary font-bold">Administrador</span>
 
     <section class="flex items-center gap-2">
-      <!-- <UButton
-        v-if="user"
-        icon="i-heroicons-arrow-left-on-rectangle-solid"
-        variant="ghost"
-        color="gray"
-        size="xl"
-        :ui="{
-          inline: 'flex-col',
-          rounded: 'rounded-xl',
-          color: {
-            gray: {
-              ghost: 'text-gray-200 hover:text-gray-200 hover:bg-gray-800',
-            },
-          },
-        }"
-        class="flex-1"
-        @click="toggleLogout"
-      /> -->
       <ClientOnly>
         <UButton
           :icon="darkModeIcon"
@@ -118,10 +97,23 @@ const items = computed<any>(() => {
           @click="changeLanguage"
         /> -->
       </ClientOnly>
+
       <UDropdown
+        v-if="user"
         :items="items"
         :popper="{ placement: 'bottom-start' }"
-        v-if="user"
+        :ui="{
+          item: {
+            active:
+              'border border-transparent dark:bg-transparent bg-transparent ',
+            inactive:
+              'hover:text-white text-gray-600 hover:before:bg-gray-800/50 border border-transparent',
+            icon: {
+              active: 'text-primary dark:text-primary',
+              inactive: 'text-primary dark:text-primary',
+            },
+          },
+        }"
       >
         <UButton
           color="gray"
