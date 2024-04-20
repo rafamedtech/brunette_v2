@@ -34,19 +34,16 @@ const ratings = [1, 2, 3, 4, 5];
         :label="surveyPageLabels.form.name"
         v-model="surveyData.name"
         placeholder="Escribe aquí"
-        size="lg"
       />
       <BaseInput
         :label="surveyPageLabels.form.email"
         v-model="surveyData.email"
         placeholder="ejemplo@correo.com"
-        size="lg"
       />
       <BaseSelect
         :label="surveyPageLabels.form.waiter"
         :items="waitersList"
         v-model="surveyData.waiter"
-        size="lg"
       />
     </article>
 

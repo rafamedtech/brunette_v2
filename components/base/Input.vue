@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { type = 'text' } = defineProps<{
+const { type = "text" } = defineProps<{
   type?: string;
   label?: string;
   placeholder?: string;
@@ -7,7 +7,8 @@ const { type = 'text' } = defineProps<{
   modelValue?: string | number | Date | null | undefined;
 }>();
 
-const handleInputChange = (event: Event) => (event.target as HTMLInputElement).value;
+const handleInputChange = (event: Event) =>
+  (event.target as HTMLInputElement).value;
 </script>
 
 <template>
@@ -23,7 +24,7 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
       @input="$emit('update:modelValue', handleInputChange($event))"
       :type="type"
       :required="isrequired"
-      size="lg"
+      size="xl"
       color="gray"
       :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
     />
