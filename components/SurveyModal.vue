@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// const store = useStore();
-// const { openModal } = storeToRefs(store);
-
 const { surveyPageLabels } = useI18n();
 
 const modal = useModal();

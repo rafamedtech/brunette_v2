@@ -17,14 +17,12 @@ const { dateFormatter } = useFormatters();
       label: 'No hay encuestas',
     }"
     :sort-button="{
-      color: 'primary',
+      color: 'gray',
       variant: 'ghost',
       square: false,
     }"
     :ui="{
-      th: { color: 'text-primary' },
       td: { padding: 'px-2', base: 'w-fit' },
-      default: { sortButton: { color: 'primary' } },
     }"
     class="lg:hidden"
   >
@@ -65,46 +63,54 @@ const { dateFormatter } = useFormatters();
       label: 'No hay encuestas',
     }"
     :sort-button="{
-      color: 'primary',
+      color: 'gray',
       variant: 'ghost',
       square: false,
-    }"
-    :ui="{
-      th: { color: 'text-primary' },
-      default: { sortButton: { color: 'primary' } },
     }"
     class="hidden lg:block"
   >
     <template #createdAt-data="{ row }">
-      <span :class="{ 'font-bold': row.new }">{{
-        dateFormatter("short", row.createdAt)
-      }}</span>
-    </template>
-
-    <template #waiter-data="{ row }">
       <UButton
-        color="gray"
+        :color="row.new ? 'primary' : 'gray'"
         variant="link"
         :to="`/admin/encuestas/${row.id}`"
         :padded="false"
       >
-        <span :class="{ 'font-bold': row.new }" class="hover:text-primary">{{
-          row.waiter
+        <span :class="{ 'font-bold': row.new }">{{
+          dateFormatter("short", row.createdAt)
         }}</span>
       </UButton>
     </template>
 
-    <template #rating-data="{ row }">
-      <span
-        class="absolute hidden text-center md:static md:block"
-        :class="{
-          'text-primary': getRating(row) === 5,
-          'text-yellow-500': getRating(row) < 5 && getRating(row) >= 4,
-          'text-red-500': getRating(row) < 4,
-          'font-bold': row.new,
-        }"
-        >{{ getRating(row) }}</span
+    <template #waiter-data="{ row }">
+      <UButton
+        :color="row.new ? 'primary' : 'gray'"
+        variant="link"
+        :to="`/admin/encuestas/${row.id}`"
+        :padded="false"
       >
+        <span :class="{ 'font-bold': row.new }">{{ row.waiter }}</span>
+      </UButton>
+    </template>
+
+    <template #rating-data="{ row }">
+      <UButton
+        :color="row.new ? 'primary' : 'gray'"
+        variant="link"
+        :to="`/admin/encuestas/${row.id}`"
+        :padded="false"
+        class="w-full justify-center text-center"
+      >
+        <span
+          :class="{
+            'text-primary': getRating(row) === 5,
+            'text-yellow-500': getRating(row) < 5 && getRating(row) >= 4,
+            'text-red-500': getRating(row) < 4,
+            'font-bold': row.new,
+          }"
+          >{{ getRating(row) }}</span
+        >
+      </UButton>
     </template>
 
     <template #new-data="{ row }">

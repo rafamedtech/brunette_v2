@@ -30,21 +30,30 @@ const ratings = [1, 2, 3, 4, 5];
 <template>
   <UForm :state="surveyData" class="mx-auto max-w-md" @submit="onSubmit">
     <article class="flex flex-col gap-4">
-      <BaseInput
-        :label="surveyPageLabels.form.name"
-        v-model="surveyData.name"
-        placeholder="Escribe aquí"
-      />
-      <BaseInput
-        :label="surveyPageLabels.form.email"
-        v-model="surveyData.email"
-        placeholder="ejemplo@correo.com"
-      />
-      <BaseSelect
-        :label="surveyPageLabels.form.waiter"
-        :items="waitersList"
-        v-model="surveyData.waiter"
-      />
+      <UFormGroup :label="surveyPageLabels.form.name">
+        <UInput
+          size="xl"
+          v-model="surveyData.name"
+          placeholder="Escribe aquí"
+        />
+      </UFormGroup>
+      <UFormGroup :label="surveyPageLabels.form.email">
+        <UInput
+          size="xl"
+          type="email"
+          v-model="surveyData.email"
+          placeholder="ejemplo@correo.com"
+        />
+      </UFormGroup>
+      <UFormGroup :label="surveyPageLabels.form.waiter">
+        <USelectMenu
+          v-model="surveyData.waiter"
+          :options="waitersList"
+          size="xl"
+          color="gray"
+          :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
+        />
+      </UFormGroup>
     </article>
 
     <section class="my-12 flex flex-col gap-4">
@@ -54,17 +63,25 @@ const ratings = [1, 2, 3, 4, 5];
       >
         <h3 class="flex-1">{{ question.text }}</h3>
         <div class="flex items-center justify-center gap-2">
-          <BaseSelect :items="ratings" v-model="question.rating" />
+          <USelectMenu
+            :options="ratings"
+            v-model="question.rating"
+            size="xl"
+            color="gray"
+            :ui="{ color: { gray: { outline: 'dark:bg-dark-strong' } } }"
+          />
           <Icon name="i-heroicons-star" size="32" class="text-primary" />
         </div>
       </article>
     </section>
 
-    <BaseTextarea
-      :label="surveyPageLabels.form.comments"
-      v-model="surveyData.comments"
-      placeholder="Escribe aquí tus comentarios"
-    />
+    <UFormGroup :label="surveyPageLabels.form.comments">
+      <UTextarea
+        v-model="surveyData.comments"
+        size="xl"
+        placeholder="Escribe aquí tus comentarios"
+      />
+    </UFormGroup>
 
     <section class="mt-8 flex justify-end">
       <UButton
