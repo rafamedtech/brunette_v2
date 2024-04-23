@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { event } = defineProps<{
-  event: Evento;
+const { event, events } = defineProps<{
+  event?: Evento | undefined;
+  events?: Evento[] | undefined | null;
 }>();
 
 const modal = useModal();
@@ -25,22 +26,32 @@ const modal = useModal();
     >
       <template #header>
         <div class="flex items-center justify-between gap-2">
-          <h2 class="text-lg">{{ event.name }}</h2>
+          <h2 class="text-lg">
+            {{ event ? event?.name : "Galería de eventos" }}
+          </h2>
           <UButton
-            label="Cerrar"
             color="primary"
-            icon="i-heroicons-arrow-left-on-rectangle-solid"
+            variant="ghost"
+            trailing-icon="i-heroicons-x-mark"
             size="md"
+            label="Cerrar"
             class="-my-1"
-            @click="modal.close()"
+            @click="modal.close"
           />
         </div>
       </template>
 
-      <img :src="event.cover" alt="" class="mx-auto h-full w-80 rounded-xl" />
+      <img
+        v-if="event"
+        :src="event?.cover"
+        alt=""
+        class="mx-auto h-full w-80 max-w-xs rounded-xl"
+      />
 
-      <template #footer>
-        <p>{{ event.description }}</p>
+      <EventCarousel v-if="events" :events="events" />
+
+      <template #footer v-if="event">
+        <p>{{ event?.description }}</p>
       </template>
     </UCard>
   </UModal>

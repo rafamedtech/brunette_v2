@@ -9,10 +9,14 @@ const { events } = defineProps<{
     :items="events"
     v-slot="{ item }"
     :ui="{ item: 'basis-full' }"
-    class="rounded-xl overflow-hidden"
+    class="overflow-hidden rounded-xl"
     arrows
     indicators
   >
-    <img :src="item.cover" class="w-full h-[35rem] object-cover" draggable="false" />
+    <img
+      :src="item.cover"
+      class="mx-auto h-[35rem] w-full max-w-xs rounded-xl object-cover"
+      draggable="false"
+    />
   </UCarousel>
 </template>

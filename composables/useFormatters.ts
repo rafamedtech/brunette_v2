@@ -15,11 +15,6 @@ export function useFormatters() {
             day: "numeric",
           };
 
-    // const dateOptions: Intl.DateTimeFormatOptions = {
-    //   year: "numeric",
-    //   month: "long",
-    //   day: "numeric",
-    // };
     if (date === undefined) return;
     return new Date(date).toLocaleString("es-MX", dateOptions);
   };

@@ -12,8 +12,6 @@ const { loadingScreen } = storeToRefs(store);
     <UModals />
     <UNotifications />
 
-    <FullscreenEvents />
-
     <Loader v-if="loadingScreen" />
   </section>
 </template>
