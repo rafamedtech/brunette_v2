@@ -76,12 +76,12 @@ export function useI18n() {
   const menuPageLabels = computed(() => {
     return language.value === "es"
       ? {
-          title: "Menú",
-          description: "Descubre nuestros platillos y bebidas",
+          title: "Brunette Kitchen & Drinks | Menú 📖",
+          description: "Conoce nuestros deliciosos platillos y mixología",
         }
       : {
-          title: "Menu",
-          description: "Discover our dishes and drinks",
+          title: "Brunette Kitchen & Drinks | Menu 📖",
+          description: "Discover our delicious dishes and mixology",
         };
   });
 

@@ -4,13 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .menu > li:hover {
-  @apply text-dark-strong dark:text-base-100;
-} */
-
 html {
   min-height: 100dvh;
-  /* width: 100vw; */
   overflow-y: scroll;
 }
 
