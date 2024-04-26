@@ -45,7 +45,7 @@ const modal = useModal();
         v-if="event"
         :src="event?.cover"
         alt=""
-        class="mx-auto h-full max-w-full rounded-xl"
+        class="mx-auto h-full max-w-full rounded-xl lg:w-80"
       />
 
       <EventCarousel v-if="events" :events="events" />
