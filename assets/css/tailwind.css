@@ -41,3 +41,18 @@ input {
   opacity: 0;
   transform: translateX(-15px);
 }
+
+.up-enter-from {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.up-enter-active,
+.up-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.up-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
+}

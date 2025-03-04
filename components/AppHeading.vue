@@ -7,7 +7,7 @@ const { title, description, cover } = defineProps<{
 </script>
 
 <template>
-  <div class="relative h-full" :class="{ 'min-h-[10rem]': cover }">
+  <div class="relative h-full py-4" :class="{ 'min-h-[10rem]': cover }">
     <img
       v-if="cover"
       :src="cover"
@@ -19,7 +19,7 @@ const { title, description, cover } = defineProps<{
       :class="{ 'grid min-h-[10rem] place-content-center': cover }"
     >
       <h1
-        class="card-title text-primary w-fit text-3xl md:text-4xl"
+        class="card-title text-primary w-fit text-3xl font-bold md:text-4xl"
         :class="{
           'bg-accent/20 dark:bg-primary/10 rounded-lg px-2 shadow-sm': cover,
         }"

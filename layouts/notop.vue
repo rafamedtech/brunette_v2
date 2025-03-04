@@ -10,16 +10,14 @@ const { navLinksLabels } = useI18n();
     </section>
 
     <div class="flex-auto transition-all lg:w-5/6">
-      <Topbar />
-      <UContainer
+      <!-- <Topbar /> -->
+      <main
         :ui="{ constrained: 'max-w-full' }"
         class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
       >
         <slot> </slot>
-      </UContainer>
-      <Transition name="up">
-        <BottomNavbar :items="navLinksLabels" class="lg:hidden" />
-      </Transition>
+      </main>
+      <!-- <BottomNavbar :items="navLinksLabels" class="lg:hidden" /> -->
 
       <FeaturedEvent />
     </div>

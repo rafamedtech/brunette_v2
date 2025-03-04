@@ -13,7 +13,7 @@ onMounted(() => {
 useSeoMeta({
   title: "Brunette Kitchen & Drinks | Menú 📖",
   description: "Conoce nuestros deliciosos platillos y mixología.",
-  image:
+  ogImage:
     "https://res.cloudinary.com/rafamed-dev/image/upload/v1705703429/menu/OG_Image_cl4k6w.png",
 });
 </script>

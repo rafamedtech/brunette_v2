@@ -26,13 +26,17 @@ useHead({
     },
   ],
 });
+
+definePageMeta({
+  layout: false,
+});
 </script>
 
 <template>
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <CategoryCard :category="currentCategory" rounded title-size="large" />
+        <CategoryCover :category="currentCategory" rounded title-size="large" />
       </template>
 
       <template #content>
