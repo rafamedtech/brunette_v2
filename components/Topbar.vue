@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LogoutModal, Feedback } from "#components";
+import type { DropdownItem } from "#ui/types";
 const { admin = false } = defineProps<{
   admin?: boolean;
 }>();
@@ -25,7 +26,7 @@ function toggleLogout() {
   modal.open(LogoutModal, {});
 }
 
-const items = computed<unknown>(() => {
+const items = computed<DropdownItem[][]>(() => {
   return [
     [
       {

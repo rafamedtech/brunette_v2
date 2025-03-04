@@ -12,6 +12,7 @@ const { navLinksLabels } = useI18n();
     <div class="flex-auto transition-all lg:w-5/6">
       <Topbar />
       <UContainer
+        :ui="{ constrained: 'max-w-full' }"
         class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
       >
         <slot> </slot>

@@ -11,7 +11,8 @@ const { adminLinks } = useNav();
     <div class="flex-auto transition-all lg:w-5/6">
       <Topbar admin />
       <UContainer
-        class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative lg:px-12"
+        :ui="{ constrained: 'max-w-full' }"
+        class="min-h-screen bg-gray-100 transition-colors dark:bg-dark-medium lg:relative"
       >
         <slot> </slot>
       </UContainer>
