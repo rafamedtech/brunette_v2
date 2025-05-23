@@ -6,7 +6,7 @@ const { section } = defineProps<{
 
 <template>
   <div
-    class="relative section-banner rounded-xl shadow-pinterest dark:section-banner-dark flex h-32 w-full flex-col justify-center py-2 lg:h-40 lg:shadow-xl"
+    class="section-banner dark:section-banner-dark relative flex h-32 w-full flex-col justify-center rounded-xl py-2 shadow-pinterest lg:h-40 lg:shadow-xl"
   >
     <img
       v-if="section.cover"
@@ -16,13 +16,16 @@ const { section } = defineProps<{
     />
 
     <h2
-      class="z-10 text-center font-handlee text-2xl"
-      :class="{ 'text-primary dark:text-primary': !section.cover, 'text-gray-100': section.cover }"
+      class="font-handlee z-10 text-center text-2xl"
+      :class="{
+        'text-dark-strong dark:text-gray-100': !section.cover,
+        'text-gray-100': section.cover,
+      }"
     >
       {{ section.name }}
     </h2>
     <p
-      class="text-center z-10 font-handlee text-lg font-extralight text-gray-50"
+      class="font-handlee z-10 text-center text-lg font-extralight text-gray-50"
       v-if="section.description"
     >
       {{ section.description }}
