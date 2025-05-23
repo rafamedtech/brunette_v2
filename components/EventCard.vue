@@ -9,7 +9,7 @@ const { name, description, cover } = event;
 <template>
   <UCard
     :ui="{
-      base: 'container items-center group min-w-full w-full border border-transparent hover:border-primary max-w-xs xl:h-[36rem] md:h-[30rem] lg:h-[28rem] h-full relative overflow-hidden bg-dark-strong shadow-lg transition-all',
+      base: 'container items-center group min-w-full w-full border border-transparent hover:border-primary max-w-xs xl:h-[36rem] h-[30rem] lg:h-[28rem] h-full relative overflow-hidden bg-dark-strong shadow-lg transition-all',
       body: { padding: 'px-0 py-0 sm:p-0 h-full' },
       rounded: 'rounded-xl',
       item: 'snap-start',
