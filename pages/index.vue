@@ -27,38 +27,36 @@ useHead({
   ],
 });
 
-definePageMeta({
-  layout: "notop",
-});
+// definePageMeta({
+//   layout: "notop",
+// });
 </script>
 
 <template>
-  <section class="dark:text-base-100 text-dark-strong lg:mt-4">
-    <section class="md:mx-auto md:w-1/2">
+  <MainSection
+    class="dark:text-base-100 text-dark-strong lg:mt-4"
+    :loading="isLoading"
+    padded
+  >
+    <template #heading>
+      <AppHeading :title="aboutPageLabels.title" />
+    </template>
+
+    <template #content>
       <UCard
         :ui="{
-          base: 'relative w-full',
+          base: 'overflow-hidden ',
           body: { padding: 'px-0 py-0 sm:p-0' },
           rounded: 'rounded-xl',
         }"
       >
-        <img
-          :src="mainCover"
-          class="h-52 w-full min-w-full rounded-b-xl object-cover brightness-50 lg:h-52"
-          alt=""
-        />
-
-        <section
-          class="absolute bottom-0 z-10 flex w-full flex-col justify-center rounded-b-xl bg-gradient-to-t from-black to-transparent pl-4"
-        >
-          <Logo />
-          <p
-            class="text-primary font-montserrat text-4xl font-bold lg:text-3xl"
-          >
-            {{ aboutInfo.name }}
-          </p>
-          <p class="pb-8 text-gray-100">{{ aboutInfo.description }}</p>
-        </section>
+        <figure>
+          <img
+            :src="mainCover"
+            class="h-52 w-full object-cover brightness-50 lg:h-52"
+            alt=""
+          />
+        </figure>
       </UCard>
       <section class="px-2">
         <section class="text-primary mb-4 mt-8 flex justify-center gap-4">
@@ -73,7 +71,7 @@ definePageMeta({
             <span class="text-dark-strong dark:text-gray-100">{{ name }}</span>
           </NuxtLink>
         </section>
-        <AppHeading :title="aboutPageLabels.title" />
+
         <section class="text-primary py-4">
           <h3 class="text-xl font-bold">
             {{ aboutPageLabels.address }}
@@ -105,7 +103,7 @@ definePageMeta({
           </section>
         </section>
 
-        <section class="pt-4">
+        <section class="hidden pt-4">
           <h3 class="text-primary text-xl font-bold">Secciones</h3>
 
           <section class="flex justify-center gap-2 pt-4">
@@ -130,6 +128,6 @@ definePageMeta({
           </section>
         </section>
       </section>
-    </section>
-  </section>
+    </template>
+  </MainSection>
 </template>

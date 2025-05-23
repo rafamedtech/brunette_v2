@@ -7,7 +7,7 @@ const { title, description, cover } = defineProps<{
 </script>
 
 <template>
-  <div class="relative h-full py-4" :class="{ 'min-h-[10rem]': cover }">
+  <div class="relative h-full w-fit py-4" :class="{ 'min-h-[10rem]': cover }">
     <img
       v-if="cover"
       :src="cover"

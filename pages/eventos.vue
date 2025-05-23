@@ -29,42 +29,40 @@ useHead({
 </script>
 
 <template>
-  <main>
-    <MainSection :loading="isLoading" padded>
-      <template #heading>
-        <AppHeading
-          :title="eventsPageLabels.title"
-          :description="eventsPageLabels.description"
+  <MainSection :loading="isLoading" padded>
+    <template #heading>
+      <AppHeading
+        :title="eventsPageLabels.title"
+        :description="eventsPageLabels.description"
+      />
+    </template>
+
+    <template #content>
+      <!-- Events on mobile -->
+      <section class="flex flex-col gap-8 px-4">
+        <UButton
+          :label="eventsPageLabels.fullscreenButton"
+          icon="i-heroicons-arrows-pointing-out"
+          class="mx-auto"
+          @click="openGallery(events)"
         />
-      </template>
 
-      <template #content>
-        <!-- Events on mobile -->
-        <section class="flex flex-col gap-8 px-4">
-          <UButton
-            :label="eventsPageLabels.fullscreenButton"
-            icon="i-heroicons-arrows-pointing-out"
-            class="mx-auto"
-            @click="openGallery(events)"
-          />
-
-          <section class="grid grid-cols-2 gap-4 md:grid-cols-3">
-            <UCard
-              v-for="event in events"
-              :key="event._id"
-              class="rounded-xl"
-              :ui="{ body: { padding: '' } }"
-              @click="openDetails(event)"
-            >
-              <img
-                :src="event.cover"
-                :alt="event.name"
-                class="h-64 w-full cursor-pointer rounded-xl object-cover md:h-full"
-              />
-            </UCard>
-          </section>
+        <section class="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <UCard
+            v-for="event in events"
+            :key="event._id"
+            class="rounded-xl"
+            :ui="{ body: { padding: '' } }"
+            @click="openDetails(event)"
+          >
+            <img
+              :src="event.cover"
+              :alt="event.name"
+              class="h-64 w-full cursor-pointer rounded-xl object-cover md:h-full"
+            />
+          </UCard>
         </section>
-      </template>
-    </MainSection>
-  </main>
+      </section>
+    </template>
+  </MainSection>
 </template>
