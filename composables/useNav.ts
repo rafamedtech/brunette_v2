@@ -6,7 +6,7 @@ export function useNav() {
   const isDark = useDark();
   const toggleDark = useToggle(isDark);
   const darkModeLabel = computed(() => {
-    return isDark.value ? "Light mode" : "Dark mode";
+    return isDark.value ? "Modo claro" : "Modo oscuro";
   });
   const darkModeIcon = computed(() =>
     isDark.value ? "i-heroicons-sun-solid" : "i-heroicons-moon-solid",

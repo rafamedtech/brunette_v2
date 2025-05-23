@@ -13,7 +13,7 @@ defineProps<Props>();
         ? `/admin/menu/categorias/${category.id}`
         : `/menu/${category.slug}`,
     }"
-    class="relative h-fit w-full text-center lg:h-[300px]"
+    class="relative h-fit w-full text-center xl:h-[300px]"
   >
     <!-- <section
       class="rounded-b-box absolute bottom-0 z-10 flex h-1/3 w-full items-center bg-gradient-to-t from-black to-transparent pl-4"
