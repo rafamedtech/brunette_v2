@@ -7,7 +7,7 @@ const { items, columns } = defineProps<{
 
 <template>
   <ul
-    class="grid grid-cols-1 gap-4 py-4 lg:grid-cols-2 lg:p-4"
+    class="grid grid-cols-1 gap-4 py-4 lg:p-4 xl:grid-cols-2"
     :class="{ 'grid-cols-2 text-left': columns === 2 }"
   >
     <li
@@ -19,7 +19,7 @@ const { items, columns } = defineProps<{
       :key="item._id"
     >
       <div
-        class="flex items-center justify-between gap-4 md:flex-col md:items-stretch md:gap-2"
+        class="flex items-center justify-between gap-4 md:gap-2 xl:flex-col xl:items-stretch"
       >
         <section>
           <h4 class="text-primary text-base font-bold">

@@ -25,7 +25,7 @@ useSeoMeta({
     </template>
 
     <template #content>
-      <section class="grid gap-6 md:grid-cols-2 md:gap-8 md:px-2 md:pt-4">
+      <section class="grid gap-6 md:gap-8 md:px-2 md:pt-4 xl:grid-cols-2">
         <CategoryItem
           v-for="category in categories"
           :key="category.id"

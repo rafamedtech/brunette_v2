@@ -34,7 +34,7 @@ useHead({
 
 <template>
   <MainSection
-    class="dark:text-base-100 text-dark-strong lg:mt-4"
+    class="dark:text-base-100 text-dark-strong"
     :loading="isLoading"
     padded
   >
@@ -49,6 +49,7 @@ useHead({
           body: { padding: 'px-0 py-0 sm:p-0' },
           rounded: 'rounded-xl',
         }"
+        class="mx-auto md:w-1/2"
       >
         <figure>
           <img
@@ -72,7 +73,7 @@ useHead({
           </NuxtLink>
         </section>
 
-        <section class="text-primary py-4">
+        <section class="text-primary py-4 md:mx-auto md:w-1/2">
           <h3 class="text-xl font-bold">
             {{ aboutPageLabels.address }}
             <span
