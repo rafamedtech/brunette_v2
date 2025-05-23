@@ -19,23 +19,21 @@ useSeoMeta({
 </script>
 
 <template>
-  <main>
-    <MainSection :loading="isLoading" padded>
-      <template #heading>
-        <AppHeading title="Menú" />
-      </template>
+  <MainSection :loading="isLoading" padded>
+    <template #heading>
+      <AppHeading title="Menú" />
+    </template>
 
-      <template #content>
-        <section class="grid gap-6 md:grid-cols-2 md:gap-8 md:px-2 md:pt-4">
-          <CategoryCard
-            v-for="category in categories"
-            :key="category.id"
-            :category="category"
-            link
-            rounded
-          />
-        </section>
-      </template>
-    </MainSection>
-  </main>
+    <template #content>
+      <section class="grid gap-6 md:grid-cols-2 md:gap-8 md:px-2 md:pt-4">
+        <CategoryItem
+          v-for="category in categories"
+          :key="category.id"
+          :category="category"
+          link
+          rounded
+        />
+      </section>
+    </template>
+  </MainSection>
 </template>

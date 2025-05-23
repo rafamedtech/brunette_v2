@@ -35,14 +35,14 @@ const { name, cover, slug } = toRefs(category);
         class="absolute bottom-0 z-10 flex h-1/3 w-full items-center bg-gradient-to-t from-black to-transparent pb-6 pl-4"
         :class="{ 'rounded-b-xl': rounded }"
       >
-        <span
+        <!-- <span
           class="font-montserrat text-2xl text-gray-100 lg:text-3xl"
           :class="{
             'text-3xl lg:text-4xl': titleSize === 'large',
           }"
         >
           {{ name }}
-        </span>
+        </span> -->
       </section>
     </UCard>
   </NuxtLink>

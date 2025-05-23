@@ -27,16 +27,18 @@ useHead({
   ],
 });
 
-definePageMeta({
-  layout: false,
-});
+// definePageMeta({
+//   layout: false,
+// });
 </script>
 
 <template>
   <main>
     <MainSection :loading="isLoading">
       <template #heading>
-        <CategoryCover :category="currentCategory" rounded title-size="large" />
+        <section class="pt-4">
+          <CategoryItem :category="currentCategory" disabled />
+        </section>
       </template>
 
       <template #content>

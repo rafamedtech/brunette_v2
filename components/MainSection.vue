@@ -6,7 +6,7 @@ const { padded = true } = defineProps<{
 </script>
 
 <template>
-  <section class="min-h-dvh w-full">
+  <main class="min-h-dvh w-full">
     <section :class="{ 'md:pt-4': !padded, 'pt-8': padded }">
       <slot name="heading"></slot>
     </section>
@@ -25,5 +25,5 @@ const { padded = true } = defineProps<{
     <section class="px-2 pb-24 pt-8" v-else>
       <slot name="content"></slot>
     </section>
-  </section>
+  </main>
 </template>
